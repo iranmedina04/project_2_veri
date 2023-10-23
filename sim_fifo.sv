@@ -1,0 +1,53 @@
+class sim_fifo #(
+    
+    parameter PAKG_SIZE = 32,
+    parameter FIFO_DEPTH = 16
+    
+    );
+
+    logic [PAKG_SIZE - 1 : 0] fifo_sim [$];
+    logic [PAKG_SIZE - 1 : 0] d_out;
+
+    function  new();
+
+        this.fifo_sim = {};
+        
+    endfunction
+
+    function push ( logic [PAKG_SIZE - 1 : 0] d_in);
+
+        if (this.fifo_sim.size() == FIFO_DEPTH) begin
+
+            $display("Una de las fifos de entrada se encuentra llena \nNo se cargará el dato para no hacer un ovearflow\n");
+
+        end
+        else begin
+            
+          $display("Se agregó el dato %h a la FIFO", d_in);
+            this.fifo_sim.push_back(d_in);
+        
+        end
+
+        
+    endfunction
+
+    function logic [PAKG_SIZE - 1 : 0] pop ();
+
+      if (fifo_sim.size() == 0) begin
+            
+            $display("Una de las fifos se encuentra vacía \nNo se realizará el pop\n");
+
+        end
+        else begin
+            
+            this.d_out = this.fifo_sim.pop_front();
+            return this.d_out;
+
+        end
+
+        
+    endfunction
+
+
+endclass
+
