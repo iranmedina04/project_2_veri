@@ -9,22 +9,22 @@
 //////  Ivannia Fernandez Rodriguez
 //////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Interfaz de las transacciones 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-interface mesh_gnrtr_if #(
+interface mesh_if #(
 
     parameter ROWS = 4,
-    parameter COLUMS = 4,  
+    parameter COLUMNS = 4,  
     parameter PAKG_SIZE = 32,
     parameter FIFO_DEPTH = 16
 
 )(
 
-    input clk_i;
+    input clk_i
 
 );
 
@@ -47,12 +47,9 @@ endinterface
 // Transacción de envio
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class transaccion #(
+class transaccion_mesh #(
 
-    parameter ROWS = 4,
-    parameter COLUMS = 4,  
-    parameter PAKG_SIZE = 32,
-    parameter FIFO_DEPTH = 16
+    parameter PAKG_SIZE = 32
 
 );
 
@@ -69,8 +66,8 @@ class transaccion #(
     
     constraint c1 {row < 6 ; row >= 0;}
     constraint c2 {colum < 6 ; colum >= 0;}
-    constraint c3 {mode >= 0; mode < 2}
-    constraint c4 {terminal_envio >= 0 ; terminal_envio < 16 }
+    constraint c3 {mode >= 0; mode < 2;}
+  	constraint c4 {terminal_envio >= 0 ; terminal_envio < 16;}
 
     // Funcion de inicialización del objeto
 
@@ -113,7 +110,7 @@ class transaccion #(
         this.tiempo_recibido,
         this.terminal_recibido
         
-        ):
+                );
         
     endfunction
 
