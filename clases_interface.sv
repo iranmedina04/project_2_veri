@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////// 
 ////// El siguiente archivo posee las las interfaces del puerto DUT y las clases de las transacciones que se
@@ -15,6 +15,7 @@
 // Interfaz de las transacciones 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 interface mesh_if #(
 
     parameter ROWS = 4,
@@ -24,7 +25,7 @@ interface mesh_if #(
 
 )(
 
-    input clk_i
+    input logic clk_i
 
 );
 
@@ -43,6 +44,7 @@ interface mesh_if #(
 
 endinterface
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Transacción de envio
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,7 +59,7 @@ class transaccion_mesh #(
     rand logic [3: 0]  row;
     rand logic [3 : 0] colum;
     rand logic mode;
-    rand logic [PAKG_SIZE - 16 : 0] payload;
+    rand logic [PAKG_SIZE - 18 : 0] payload;
     logic [PAKG_SIZE - 1 : 0] pckg;
     rand int terminal_envio;
     int tiempo_envio;
@@ -94,10 +96,10 @@ class transaccion_mesh #(
         
     endfunction
 
-    function  print();
+    function print();
 
         $display("El paquete posee los siguiente elementos:");
-        $display("Nex jump: %g \nRow: %g \nColum: %g \nMode: %g \nPayload: %g \nPackage: %g \nTerminal Envio: %g \nTiempo envio: %g \nTerminal recibido: %g \nTiempo recibido: %g",
+      $display("Nex jump: %h \nRow: %h \nColum: %h \nMode: %h \nPayload: %h \nPackage: %h \nTerminal Envio: %g \nTiempo envio: %g \nTerminal recibido: %g \nTiempo recibido: %g \n",
         
         this.next_jump,
         this.row,
@@ -110,9 +112,11 @@ class transaccion_mesh #(
         this.tiempo_recibido,
         this.terminal_recibido
         
-                );
+       );
         
     endfunction
+
+    typedef mailbox #(transaccion_mesh) transaccion_mesh_mbx;
 
 
 endclass
