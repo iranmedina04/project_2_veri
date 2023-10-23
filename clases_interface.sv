@@ -56,14 +56,66 @@ class transaccion #(
 
 );
 
-    rand logic [7 : 0] next_jump;
+    logic [7 : 0] next_jump;
     rand logic [3: 0]  row;
     rand logic [3 : 0] colum;
     rand logic mode;
     rand logic [PAKG_SIZE - 16 : 0] payload;
     logic [PAKG_SIZE - 1 : 0] pckg;
+    rand int terminal_envio;
+    int tiempo_envio;
+    int tiempo_recibido;
+    int terminal_recibido; 
+    
+    constraint c1 {row < 6 ; row >= 0;}
+    constraint c2 {colum < 6 ; colum >= 0;}
+    constraint c3 {mode >= 0; mode < 2}
+    constraint c4 {terminal_envio >= 0 ; terminal_envio < 16 }
 
+    // Funcion de inicialización del objeto
 
+    function  new();
+
+        this.next_jump = 0;
+        this.row = 0;
+        this.colum = 0;
+        this.mode = 0;
+        this.payload = 0;
+        this.pckg = 0;
+        this.terminal_envio = 0;
+        this.tiempo_envio = 0;
+        this.tiempo_recibido = 0;
+        this.terminal_recibido = 0;
+        
+    endfunction
+
+    // Funcion de calculo del paquete
+
+    function  fun_pckg;
+
+        this.pckg = {this.next_jump,this.row,this.colum,this.mode,this.payload};
+        
+    endfunction
+
+    function  print();
+
+        $display("El paquete posee los siguiente elementos:");
+        $display("Nex jump: %g \nRow: %g \nColum: %g \nMode: %g \nPayload: %g \nPackage: %g \nTerminal Envio: %g \nTiempo envio: %g \nTerminal recibido: %g \nTiempo recibido: %g",
+        
+        this.next_jump,
+        this.row,
+        this.colum,
+        this.mode,
+        this.payload,
+        this.pckg,
+        this.terminal_envio,
+        this.tiempo_envio,
+        this.tiempo_recibido,
+        this.terminal_recibido
+        
+        ):
+        
+    endfunction
 
 
 endclass
