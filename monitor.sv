@@ -29,7 +29,7 @@ class monitor #(
 
     // Transacciones que se utilizarán para los datos recibidos
 
-    trans_mesh transaccion_checker; 
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_checker; 
 
     // Mailboxes que se utilizarán para enviar datos al checker
 
