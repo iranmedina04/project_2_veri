@@ -1,4 +1,4 @@
-
+`timescale 10ns/1ps
 `include "fifo.sv"
 `include "Library.sv"
 `include "Router_library.sv"
@@ -6,6 +6,7 @@
 `include "sim_fifo.sv"
 `include "driver.sv"
 `include "monitor.sv"
+
 
 
 
