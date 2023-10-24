@@ -64,7 +64,7 @@ class sim_fifo #(
 
     function int sizes ();
         
-        sizes = fifo_sim.sizes();
+        sizes = fifo_sim.size();
         return sizes;
 
     endfunction
