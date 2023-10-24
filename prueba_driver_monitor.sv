@@ -1,10 +1,11 @@
+`include "fifo.sv"
+`include "Library.sv"
+`include "Router_library.sv"
 `include "clases_interface.sv"
 `include "sim_fifo.sv"
 `include "driver.sv"
 `include "monitor.sv"
-`include "fifo.sv"
-`include "Library.sv"
-`include "Router_library.sv"
+
 
 module testbench();
 
@@ -27,9 +28,9 @@ module testbench();
 
     // Mailboxes
 
-    trans_mesh_mbx agent_to_drivers_mbx [15 : 0];
+    trans_mbx agent_to_drivers_mbx [15 : 0];
 
-    trans_mesh_mbx monitor_to_checker_mbx;
+    trans_mbx monitor_to_checker_mbx;
     
     // Interfaces
 
@@ -88,7 +89,11 @@ module testbench();
 
                 end  
                 begin
-
+                    
+                    @(posedge clk_i);
+                    @(posedge clk_i);
+                    @(posedge clk_i);
+                    @(posedge clk_i);
                     transaccion_envio = new();   
                     transaccion_envio.randomize():
                     transaccion_envio.fun_pckg();
