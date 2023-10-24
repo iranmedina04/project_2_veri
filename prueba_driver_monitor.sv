@@ -100,7 +100,7 @@ module testbench();
                     @(posedge clk_i);
                     @(posedge clk_i);
                     transaccion_envio = new();   
-                    transaccion_envio.randomize():
+                    transaccion_envio.randomize();
                     transaccion_envio.fun_pckg();
                     $display("Transacción Enviada");
                     transaccion_envio.print();
