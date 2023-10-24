@@ -1,4 +1,3 @@
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////// 
 ////// El siguiente archivo posee las las interfaces del puerto DUT y las clases de las transacciones que se
@@ -49,7 +48,7 @@ endinterface
 // Transacción de envio
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class transaccion_mesh #(
+class trans_mesh #(
 
     parameter PAKG_SIZE = 32
 
@@ -89,7 +88,7 @@ class transaccion_mesh #(
     endfunction
 
     // Funcion de calculo del paquete
-
+    
     function  fun_pckg;
 
         this.pckg = {this.next_jump,this.row,this.colum,this.mode,this.payload};
@@ -98,7 +97,7 @@ class transaccion_mesh #(
 
     function print();
 
-        $display("El paquete posee los siguiente elementos:");
+      $display("El paquete posee los siguiente elementos:");
       $display("Nex jump: %h \nRow: %h \nColum: %h \nMode: %h \nPayload: %h \nPackage: %h \nTerminal Envio: %g \nTiempo envio: %g \nTerminal recibido: %g \nTiempo recibido: %g \n",
         
         this.next_jump,
@@ -116,7 +115,7 @@ class transaccion_mesh #(
         
     endfunction
 
-    typedef mailbox #(transaccion_mesh) transaccion_mesh_mbx;
+    typedef mailbox #(trans_mesh) trans_mesh_mbx;
 
 
 endclass

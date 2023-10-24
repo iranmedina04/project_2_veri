@@ -1,3 +1,16 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////// 
+////// El siguiente archivo corresponde a la fifo de simulación. Este es la simulación de una fifo en la cual se
+////// se guardarán los paquetes de envío.
+////// 
+////// Autores:
+//////  Irán Medina Aguilar
+//////  Ivannia Fernandez Rodriguez
+//////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 class sim_fifo #(
     
     parameter PAKG_SIZE = 32,
@@ -7,6 +20,7 @@ class sim_fifo #(
 
     logic [PAKG_SIZE - 1 : 0] fifo_sim [$];
     logic [PAKG_SIZE - 1 : 0] d_out;
+    int size;
 
     function  new();
 
@@ -46,6 +60,13 @@ class sim_fifo #(
         end
 
         
+    endfunction
+
+    function int size ();
+        
+        size = fifo_sim.size();
+        return size;
+
     endfunction
 
 
