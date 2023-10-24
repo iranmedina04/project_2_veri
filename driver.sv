@@ -92,7 +92,7 @@ class driver #(
       
                 // Si hay algo en la fifo el pending está en alto
                 
-                if (fifo_entrada.size() > 0) begin
+                if (fifo_entrada.sizes() > 0) begin
                     
                     vif.pndng_i_in[id_terminal] = '1;
 
