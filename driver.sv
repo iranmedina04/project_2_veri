@@ -23,7 +23,7 @@ class driver #(
 
     // Constantes necesarias para el funcionamiento
 
-    int id_terminal
+    int id_terminal;
 
     // Transacciones que se utilizarán para el envio
 
