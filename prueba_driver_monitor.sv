@@ -1,6 +1,8 @@
 `timescale 10ns/1ps
+`define FIFOS
 `include "fifo.sv"
 `include "Library.sv"
+`define LIB
 `include "Router_library.sv"
 `include "clases_interface.sv"
 `include "sim_fifo.sv"
