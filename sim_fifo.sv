@@ -20,7 +20,7 @@ class sim_fifo #(
 
     logic [PAKG_SIZE - 1 : 0] fifo_sim [$];
     logic [PAKG_SIZE - 1 : 0] d_out;
-    int size;
+    int sizes;
 
     function  new();
 
@@ -64,8 +64,8 @@ class sim_fifo #(
 
     function int sizes ();
         
-        size = fifo_sim.sizes();
-        return size;
+        sizes = fifo_sim.sizes();
+        return sizes;
 
     endfunction
 
