@@ -46,7 +46,7 @@ module testbench();
 
     ) _if (
 
-        input logic clk_i
+        .clk_i(clk_i)
 
     );
 
