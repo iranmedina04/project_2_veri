@@ -8,9 +8,6 @@
 `include "monitor.sv"
 
 
-
-
-
 module testbench();
 
     reg clk_i = 0;
@@ -66,13 +63,15 @@ module testbench();
     always #5 clk_i = ~clk_i;
 
     initial begin
+
+         monitor_to_checker_mbx = new();
         
         for (int i = 0; i < 16; ++i) begin
             
             my_drivers[i] = new(.id(i));
             my_monitors[i] = new(.id(i));
             agent_to_drivers_mbx[i] = new();
-            monitor_to_checker_mbx = new();
+           
             my_drivers[i].agnt_drv_mbx = agent_to_drivers_mbx[i];
             my_monitors[i].mon_chckr_mbx = monitor_to_checker_mbx;
             my_drivers[i].vif = _if;
