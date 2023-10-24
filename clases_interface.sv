@@ -115,7 +115,6 @@ class trans_mesh #(
         
     endfunction
 
-    typedef mailbox #(trans_mesh) trans_mbx;
-
-
 endclass
+
+typedef mailbox #(trans_mesh) trans_mbx;
