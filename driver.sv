@@ -27,7 +27,7 @@ class driver #(
 
     // Transacciones que se utilizarán para el envio
 
-    trans_mesh transaccion_agente; 
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_agente; 
 
     // Mailboxes que se utilizarán para recibir datos del angent
 
