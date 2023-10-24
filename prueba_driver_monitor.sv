@@ -1,10 +1,12 @@
-`include "fifo.sv"
-`include "Library.sv"
-`include "Router_library.sv"
+
 `include "clases_interface.sv"
 `include "sim_fifo.sv"
 `include "driver.sv"
 `include "monitor.sv"
+`include "fifo.sv"
+`include "Library.sv"
+`include "Router_library.sv"
+
 
 
 module testbench();
