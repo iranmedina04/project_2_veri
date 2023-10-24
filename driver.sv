@@ -31,7 +31,7 @@ class driver #(
 
     // Mailboxes que se utilizarán para recibir datos del angent
 
-    trans_mesh_mbx agnt_drv_mbx;
+    trans_mesh_mbx #(.PAKG_SIZE(PAKG_SIZE)) agnt_drv_mbx;
 
     // Interfaz virutal que controlará el sistema
 
