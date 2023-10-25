@@ -128,7 +128,7 @@ module testbench();
         @(posedge clk_i);
         @(posedge clk_i);
         @(posedge clk_i);
-       
+       $display("Estoy antes del loop");
         while(monitor_to_checker_mbx.num() < 0)begin
              $display("Esperando transaccion");
              @(posedge clk_i);
