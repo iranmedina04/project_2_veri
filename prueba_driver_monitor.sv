@@ -25,9 +25,9 @@ module testbench();
 
     // Transacciones
 
-    trans_mesh transaccion_envio;
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_envio;
 
-    trans_mesh transaccion_recibido;
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_recibido;
 
     // Mailboxes
 

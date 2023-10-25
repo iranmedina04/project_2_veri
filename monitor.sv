@@ -33,7 +33,7 @@ class monitor #(
 
     // Mailboxes que se utilizarán para enviar datos al checker
 
-    trans_mbx mon_chckr_mbx;
+    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) mon_chckr_mbx;
 
     // Interfaz virutal que controlará el sistema
 

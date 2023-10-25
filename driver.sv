@@ -49,8 +49,7 @@ class driver #(
     function  new (int id);
 
         fifo_entrada = new();
-        transaccion_agente = new();
-        $display("Se creo el driver con el id: %g", id);
+        $display("Se creo el driver con el id: %g \n", id);
         this.id_terminal = id;
         
     endfunction
