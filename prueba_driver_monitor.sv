@@ -128,8 +128,14 @@ module testbench();
         @(posedge clk_i);
         @(posedge clk_i);
         @(posedge clk_i);
-        transaccion_envio = new(); 
+       
+        while(monitor_to_checker_mbx.num() < 0)begin
+             $display("Esperando transaccion");
+             @(posedge clk_i);
+        end
+
         $display("Transacción Recibida");
+        transaccion_envio = new(); 
         monitor_to_checker_mbx.get(transaccion_envio);
         transaccion_envio.print();
         @(posedge clk_i);
