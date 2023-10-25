@@ -74,12 +74,12 @@ class driver #(
             // Saca todos los paquetes y los agrega a los filos de entrada
 
 
-            while (agnt_drv_mbx.num() > 0) begin
+            if (agnt_drv_mbx.num() > 0) begin
                 
                 transaccion_agente = new();
                 agnt_drv_mbx.get(transaccion_agente);
                 fifo_entrada.push(transaccion_agente.pckg);
-                vif.pndng_i_in[id_terminal] = '1;
+                vif.pdng_i_in[id_terminal] = '1;
                 vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0];
 
 
@@ -94,11 +94,11 @@ class driver #(
                 
                 if (fifo_entrada.sizes() > 0) begin
                     
-                    vif.pndng_i_in[id_terminal] = '1;
+                    vif.pdng_i_in[id_terminal] = '1;
 
                 end else begin
                     
-                    vif.pndng_i_in[id_terminal] = '0;
+                    vif.pdng_i_in[id_terminal] = '0;
                     vif.dato_out_i_in [id_terminal] = '0;
 
                 end
