@@ -31,9 +31,9 @@ module testbench();
 
     // Mailboxes
 
-    trans_mbx agent_to_drivers_mbx [15 : 0];
+    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) agent_to_drivers_mbx [15 : 0];
 
-    trans_mbx monitor_to_checker_mbx;
+    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) monitor_to_checker_mbx;
     
     // Interfaces
 
