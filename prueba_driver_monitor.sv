@@ -57,7 +57,7 @@ module testbench();
         .popin(_if.popin),
         .pop(_if.pop),
         .data_out_i_in(_if.data_out_i_in),
-        .pndng_i_in(_if.pndng_i_in),
+        .pndng_i_in(_if.pdng_i_in),
         .clk(_if.clk_i),
         .reset(_if.rst_i)
     );
