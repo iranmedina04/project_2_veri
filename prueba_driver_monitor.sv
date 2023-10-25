@@ -93,50 +93,48 @@ module testbench();
                     my_monitors[terminales].run();
 
                 end  
-                begin
-                    
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    transaccion_envio = new();   
-                    transaccion_envio.randomize();
-                    transaccion_envio.fun_pckg();
-                    $display("Transacción Enviada");
-                    transaccion_envio.print();
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    agent_to_drivers_mbx[0].put(transaccion_envio);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    @(posedge clk_i);
-                    transaccion_envio = new(); 
-                    $display("Transacción Recibida");
-                    monitor_to_checker_mbx.get(transaccion_envio);
-                    transaccion_envio.print();
-                    @(posedge clk_i);
-                    $finish;                    
-
-                end
+  
             join_none
             
         end
 
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        transaccion_envio = new();   
+        transaccion_envio.randomize();
+        transaccion_envio.fun_pckg();
+        $display("Transacción Enviada");
+        transaccion_envio.print();
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        agent_to_drivers_mbx[0].put(transaccion_envio);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        @(posedge clk_i);
+        transaccion_envio = new(); 
+        $display("Transacción Recibida");
+        monitor_to_checker_mbx.get(transaccion_envio);
+        transaccion_envio.print();
+        @(posedge clk_i);
+        $finish;            
+           
 
 
 
