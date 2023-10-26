@@ -21,7 +21,7 @@ class monitor #(
 
      // Objeto fifo de salida en lo cual se almacenarán los paquetes recibidos
 
-    sim_fifo fifo_salida;
+    sim_fifo #(.PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) fifo_salida;
 
     // Constantes necesarias para el funcionamiento
 
@@ -50,7 +50,7 @@ class monitor #(
 
     function  new (int id);
 
-        fifo_salida = new();
+        fifo_salida = new(id);
         transaccion_checker = new();
         $display("Se creo el checker con el id: %g \ns", id);
         this.id_terminal = id;

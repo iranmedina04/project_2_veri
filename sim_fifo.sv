@@ -21,10 +21,12 @@ class sim_fifo #(
     logic [PAKG_SIZE - 1 : 0] fifo_sim [$];
     logic [PAKG_SIZE - 1 : 0] d_out;
     int size;
+    int id_terminal;
 
-    function  new();
+    function  new(int id = 0);
 
         this.fifo_sim = {};
+        this.id_terminal = id;
         
     endfunction
 
@@ -37,7 +39,7 @@ class sim_fifo #(
         end
         else begin
             
-          $display("Se agregó el dato %h a la FIFO", d_in);
+          $display("Se agregó el dato %h a la FIFO %G \n", d_in, ID_TERMINAL);
             this.fifo_sim.push_back(d_in);
         
         end

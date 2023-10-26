@@ -19,7 +19,7 @@ class driver #(
 
     // Objeto fifo de entrada
 
-    sim_fifo fifo_entrada;
+    sim_fifo #(.PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) fifo_entrada;
 
     // Constantes necesarias para el funcionamiento
 
@@ -48,7 +48,7 @@ class driver #(
 
     function  new (int id);
 
-        fifo_entrada = new();
+        fifo_entrada = new(id);
         $display("Se creo el driver con el id: %g \n", id);
         this.id_terminal = id;
         
