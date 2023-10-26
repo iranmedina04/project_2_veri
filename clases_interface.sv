@@ -66,7 +66,7 @@ class trans_mesh #(
     int terminal_recibido; 
     
     constraint c1 {row < 6 ; row >= 0;}
-    constraint c2 {colum < 6 ; colum >= 0;}
+    constraint c2 { row == 0 -> colum < 6 ; row == 0 -> colum >= 0; row == 5 -> colum < 6 ; row == 5 -> colum >= 0;  row != 0 -> colum == 0 ; row != 0 -> colum == 5;}
     constraint c3 {mode >= 0; mode < 2;}
   	constraint c4 {terminal_envio >= 0 ; terminal_envio < 16;}
 
@@ -98,7 +98,7 @@ class trans_mesh #(
     function print();
 
       $display("El paquete posee los siguiente elementos:");
-      $display("Nex jump: %h \nRow: %h \nColum: %h \nMode: %h \nPayload: %h \nPackage: %h \nTerminal Envio: %h \nTiempo envio: %g \nTerminal recibido: %g \nTiempo recibido: %g \n",
+      $display("Nex jump: %h \nRow: %h \nColum: %h \nMode: %h \nPayload: %h \nPackage: %h \nTerminal Envio: %h \nTiempo envio: %g \nTerminal recibido: %h \nTiempo recibido: %g \n",
         
         this.next_jump,
         this.row,
