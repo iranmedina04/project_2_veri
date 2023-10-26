@@ -39,7 +39,7 @@ class sim_fifo #(
         end
         else begin
             
-          $display("Se agregó el dato %h a la FIFO %G \n", d_in, ID_TERMINAL);
+          $display("Se agregó el dato %h a la FIFO %G \n", d_in, id_terminal);
             this.fifo_sim.push_back(d_in);
         
         end
