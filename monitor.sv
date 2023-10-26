@@ -52,7 +52,7 @@ class monitor #(
 
         fifo_salida = new();
         transaccion_checker = new();
-        $display("Se creo el checker con el id: %g", id);
+        $display("Se creo el checker con el id: %g \ns", id);
         this.id_terminal = id;
         
     endfunction
@@ -60,6 +60,7 @@ class monitor #(
     task run();
 
         vif.pop[id_terminal] = '0;
+        $display("El vif.pop[%g] fue puesto es %b \n", id_terminal, vif.pop[id_terminal]);
 
         forever begin
 
