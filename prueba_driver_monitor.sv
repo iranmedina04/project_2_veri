@@ -90,9 +90,15 @@ module testbench();
                 begin
 
                     my_drivers[terminales].run();
-                    my_monitors[terminales].run();
+
 
                 end  
+
+                begin
+
+                    my_monitors[terminales].run();
+
+                end
   
             join_none
             
