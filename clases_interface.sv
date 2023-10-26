@@ -108,10 +108,10 @@ class trans_mesh #(
         this.pckg,
         this.terminal_envio,
         this.tiempo_envio,
-        this.tiempo_recibido,
         this.terminal_recibido
+        this.tiempo_recibido,
         
-       );
+      );
         
     endfunction
 
