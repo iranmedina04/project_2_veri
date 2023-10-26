@@ -111,7 +111,7 @@ module testbench();
         @(posedge clk_i);
         @(posedge clk_i);
 
-        for (int i=0; i<MAX; ++i) begin
+        for (int i=0; i<16; ++i) begin
                    
                     transaccion_envio = new();   
                     transaccion_envio.randomize();
