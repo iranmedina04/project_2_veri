@@ -37,6 +37,8 @@ module testbench();
     
     // Interfaces
 
+    int recibidos = 0;
+
     mesh_if #(
 
     .ROWS(ROWS),
@@ -109,42 +111,32 @@ module testbench();
         @(posedge clk_i);
         @(posedge clk_i);
 
-        transaccion_envio = new();   
-        transaccion_envio.randomize();
-        transaccion_envio.fun_pckg();
-        $display("Transacción Enviada");
-        transaccion_envio.print();
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        agent_to_drivers_mbx[0].put(transaccion_envio);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-       $display("Estoy antes del loop");
-        while(monitor_to_checker_mbx.num() < 1)begin
-             $display("Esperando transaccion");
-             @(posedge clk_i);
+        for (int i=0; i<MAX; ++i) begin
+                   
+                    transaccion_envio = new();   
+                    transaccion_envio.randomize();
+                    transaccion_envio.fun_pckg();
+                    $display("Transacción Enviada\n");
+                    transaccion_envio.print();
+                    agent_to_drivers_mbx[i].put(transaccion_envio);
+
         end
 
-        $display("Transacción Recibida");
-        transaccion_envio = new(); 
-        monitor_to_checker_mbx.get(transaccion_envio);
-        transaccion_envio.print();
+        while (recibidos < 15) begin
+            
+            while(monitor_to_checker_mbx.num() < 1)begin
+                $display("Esperando transaccion\n");
+                @(posedge clk_i);
+            end
+
+            $display("Transacción Recibida %g\n", recibidos);
+            transaccion_envio = new(); 
+            monitor_to_checker_mbx.get(transaccion_envio);
+            transaccion_envio.print();
+            recibidos = recibidos + 1;
+
+        end
+
         @(posedge clk_i);
         $finish;            
            
