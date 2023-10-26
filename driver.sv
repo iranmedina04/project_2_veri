@@ -57,7 +57,7 @@ class driver #(
     task  run ();
 
         // Reset de inicio y valores iniciales 
-
+        $display("Driver %g run", id_terminal);
         vif.dato_out_i_in [id_terminal] = '0;
         vif.pdng_i_in [id_terminal] = '0;
         vif.rst_i = 1'b1;

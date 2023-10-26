@@ -59,6 +59,7 @@ class monitor #(
 
     task run();
 
+        $display("Monitor %g run", id_terminal);
         vif.pop[id_terminal] = '0;
         $display("El vif.pop[%g] fue puesto es %b \n", id_terminal, vif.pop[id_terminal]);
 
