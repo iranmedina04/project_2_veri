@@ -102,6 +102,7 @@ module testbench();
         @(posedge clk_i);
         @(posedge clk_i);
         @(posedge clk_i);
+        $finish;
         transaccion_envio = new();   
         transaccion_envio.randomize();
         transaccion_envio.fun_pckg();
