@@ -99,8 +99,9 @@ class driver #(
                 if (fifo_entrada.sizes() > 0) begin
                     
                     vif.pdng_i_in[id_terminal] = '1;
+                    vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0];
 
-
+                
                 end else begin
                     
                     vif.pdng_i_in[id_terminal] = '0;
