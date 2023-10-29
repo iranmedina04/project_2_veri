@@ -132,6 +132,9 @@ module testbench();
                    
                     transaccion_envio = new();   
                     transaccion_envio.randomize();
+                    transaccion_envio.terminal_envio = 4;
+                    transaccion_envio.row = 4;
+                    transaccion_envio.colum = 5;
                     transaccion_envio.fun_pckg();
                     $display("Transacción Enviada\n");
                     transaccion_envio.print();
