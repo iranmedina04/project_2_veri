@@ -33,6 +33,8 @@ class driver #(
 
     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) agnt_drv_mbx;
 
+    logic [PAKG_SIZE - 1 : 0] dato_pop;
+
     // Interfaz virutal que controlará el sistema
 
     virtual mesh_if #(
@@ -90,10 +92,12 @@ class driver #(
             if(vif.popin[id_terminal])
       
                 // Si hay algo en la fifo el pending está en alto
+                dato_pop = fifo_entrada.pop();
                 
                 if (fifo_entrada.sizes() > 0) begin
                     
                     vif.pdng_i_in[id_terminal] = '1;
+
 
                 end else begin
                     
