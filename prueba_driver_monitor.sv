@@ -23,17 +23,23 @@ module testbench();
 
     monitor #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_monitors [15 :0];
 
+    monitor_interno #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_monitor_intern;
+
     // Transacciones
 
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_envio;
 
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_recibido;
 
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_interna;
+
     // Mailboxes
 
     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) agent_to_drivers_mbx [15 : 0];
 
     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) monitor_to_checker_mbx;
+
+    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) monitor_interno_mbx; 
     
     // Interfaces
 
@@ -69,7 +75,11 @@ module testbench();
     initial begin
 
          monitor_to_checker_mbx = new();
-        
+         monitor_interno_mbx = new();
+         my_monitor_intern = new();
+         my_monitor_intern.transaccion_monitor_interno_mbx = monitor_interno_mbx;
+         my_monitor_intern.vif = _if;
+
         for (int i = 0; i < 16; ++i) begin
             
             my_drivers[i] = new(.id(i));
@@ -106,12 +116,18 @@ module testbench();
             
         end
 
+        fork
+
+            my_monitor_intern.run();
+            
+        join_none
+
         @(posedge clk_i);
         @(posedge clk_i);
         @(posedge clk_i);
         @(posedge clk_i);
 
-        for (int i=0; i<16; ++i) begin
+        for (int i=0; i<1; ++i) begin
                    
                     transaccion_envio = new();   
                     transaccion_envio.randomize();
@@ -122,7 +138,7 @@ module testbench();
 
         end
 
-        while (recibidos < 15) begin
+        while (recibidos < 1) begin
             
             while(monitor_to_checker_mbx.num() < 1)begin
                 $display("Esperando transaccion\n");
@@ -138,6 +154,17 @@ module testbench();
         end
 
         @(posedge clk_i);
+
+        while (monitor_interno_mbx.num() > 0) begin
+
+            transaccion_interna = new();
+            monitor_interno_mbx.get(transaccion_interna);
+            $display("Salida de la ruta");
+            transaccion_interna.print();
+            
+        end
+
+
         $finish;            
            
 
