@@ -72,7 +72,14 @@ class chcker #(
                     // Compara los valores necesarios para saber si es parte del ruta, entonces
 
                     if (transaccion_mon_sb_slocitud_interna_respuesta.pckg[PAKG_SIZE - 9 : 0] == transaccion_mon_chckr_intermedio.pckg[PAKG_SIZE - 9 : 0] ) begin
-                                            
+
+                        $display("Estoy comparando \n");
+                        transaccion_mon_chckr_intermedio.print();
+                        $display("y \n");
+                        transaccion_mon_sb_slocitud_interna_respuesta.print();
+
+                        $display("");
+
                         for (int i=0; i< transaccion_mon_sb_slocitud_interna_respuesta.ruta.size(); ++i) begin
                             
                                 if( transaccion_mon_sb_slocitud_interna_respuesta.ruta[i] == transaccion_mon_chckr_intermedio.terminal_recibido) begin
