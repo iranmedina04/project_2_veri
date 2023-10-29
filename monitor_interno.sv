@@ -21,14 +21,14 @@ class monitor_interno #(
     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) transaccion_monitor_interno_mbx;
 
     task run();
-
+        $display("El Monitor interno está corriendo");
         forever begin
             
             @(posedge vif.clk_i);
 
-            for (int r=1; r<5; ++r) begin
-                for (int c=1; c<5; ++c) begin
-                    for (int g=0; g<4; ++g) begin
+            //for (int r=1; r<5; ++r) begin
+              //  for (int c=1; c<5; ++c) begin
+                //    for (int g=0; g<4; ++g) begin
 
                        if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[1].rtr_ntrfs_.popin) begin
 
@@ -40,9 +40,9 @@ class monitor_interno #(
 
                        end 
 
-                    end
-                end
-            end 
+                  //  end
+                //end
+            //end 
 
 
         end
