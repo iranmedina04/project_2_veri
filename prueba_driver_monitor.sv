@@ -8,6 +8,7 @@
 `include "sim_fifo.sv"
 `include "driver.sv"
 `include "monitor.sv"
+`include "monitor_interno.sv"
 
 
 module testbench();
