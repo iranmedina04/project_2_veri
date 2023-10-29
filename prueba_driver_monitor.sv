@@ -136,6 +136,7 @@ module testbench();
                     transaccion_envio.row = 4;
                     transaccion_envio.colum = 5;
                     transaccion_envio.fun_pckg();
+                    transaccion_envio.fun_ruta();
                     $display("Transacción Enviada\n");
                     transaccion_envio.print();
                     agent_to_drivers_mbx[i].put(transaccion_envio);
