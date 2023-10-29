@@ -26,6 +26,9 @@ module testbench();
 
     monitor_interno #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_monitor_intern;
 
+    chcker #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_chcker;
+
+
     // Transacciones
 
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_envio;
@@ -41,6 +44,12 @@ module testbench();
     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) monitor_to_checker_mbx;
 
     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) monitor_interno_mbx; 
+
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_mon_sb_slocitud_interna; // Es del checker
+
+    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) mon_sb_slocitud_interna_mbx;    
+
+     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) mon_sb_slocitud_interna_respuesta_mbx;
     
     // Interfaces
 
@@ -78,8 +87,17 @@ module testbench();
          monitor_to_checker_mbx = new();
          monitor_interno_mbx = new();
          my_monitor_intern = new();
+         my_chcker = new();
          my_monitor_intern.transaccion_monitor_interno_mbx = monitor_interno_mbx;
+         my_chcker.transaccion_monitor_interno_mbx = monitor_interno_mbx;
+         mon_sb_slocitud_interna_mbx = new();
+         my_chcker.mon_sb_slocitud_interna_mbx = mon_sb_slocitud_interna_mbx;
+         mon_sb_slocitud_interna_respuesta_mbx = new();
+         my_chcker.mon_sb_slocitud_interna_respuesta_mbx = mon_sb_slocitud_interna_respuesta_mbx;
+         my_chcker.mon_chckr_mbx =  monitor_to_checker_mbx;
          my_monitor_intern.vif = _if;
+         my_chcker.vif = _if;
+
 
         for (int i = 0; i < 16; ++i) begin
             
@@ -120,6 +138,7 @@ module testbench();
         fork
 
             my_monitor_intern.run();
+            my_chcker.run();
             
         join_none
 
@@ -140,8 +159,15 @@ module testbench();
                     $display("Transacción Enviada\n");
                     transaccion_envio.print();
                     agent_to_drivers_mbx[4].put(transaccion_envio);
+                    for (int i=0; i<6; ++i) begin
+                   
+                         mon_sb_slocitud_interna_respuesta_mbx.put(transaccion_envio);
+
+                    end
 
         end
+
+  
 
         while (recibidos < 1) begin
             
@@ -158,17 +184,11 @@ module testbench();
 
         end
 
-        @(posedge clk_i);
-
-        while (monitor_interno_mbx.num() > 0) begin
-
-            transaccion_interna = new();
-            monitor_interno_mbx.get(transaccion_interna);
-            $display("Salida de la ruta");
-            transaccion_interna.print();
-            
+        repeat(100) begin
+        
+            @(posedge clk_i);
+        
         end
-
 
         $finish;            
            

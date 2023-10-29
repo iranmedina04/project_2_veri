@@ -21,7 +21,7 @@ class monitor_interno #(
     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) transaccion_monitor_interno_mbx;
 
     task run();
-        $display("El Monitor interno está corriendo \n");
+        $display("Inter Monitor Run \n");
 
         forever begin
 
