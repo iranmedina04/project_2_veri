@@ -70,7 +70,7 @@ class driver #(
 
         forever begin
 
-            @(posedge vif.clk_i);
+            @(negedge vif.clk_i);
             // Saca todos los paquetes y los agrega a los filos de entrada
 
 
