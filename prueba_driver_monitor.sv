@@ -132,14 +132,14 @@ module testbench();
                    
                     transaccion_envio = new();   
                     transaccion_envio.randomize();
-                    transaccion_envio.terminal_envio = 4;
+                    transaccion_envio.terminasl_envio = 4;
                     transaccion_envio.row = 4;
                     transaccion_envio.colum = 5;
                     transaccion_envio.fun_pckg();
                     transaccion_envio.fun_ruta();
                     $display("Transacción Enviada\n");
-                    transaccion_envio.print();
-                    agent_to_drivers_mbx[i].put(transaccion_envio);
+                    transaccion_envio.print();ks
+                    agent_to_drivers_mbx[4].put(transaccion_envio);
 
         end
 
