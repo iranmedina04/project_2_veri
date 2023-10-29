@@ -24,7 +24,7 @@ class sim_fifo #(
     int id_terminal;
 
     function  new(int id = 0);
-
+        $display("Se creo la fifa de entrada con id: %g", id);
         this.fifo_sim = {};
         this.id_terminal = id;
         
@@ -39,7 +39,7 @@ class sim_fifo #(
         end
         else begin
             
-          $display("Se agregó el dato %h a la FIFO %G \n", d_in, id_terminal);
+          $display("Se agregó el dato %h a la FIFO %g \n", d_in, id_terminal);
             this.fifo_sim.push_back(d_in);
         
         end
