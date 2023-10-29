@@ -35,7 +35,7 @@ class monitor_interno #(
                 transaccion_monitor_interno = new();
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;
-                transaccion_monitor_interno.pckg = $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[3].rtr_ntrfs_.data_out_i_in;
+                transaccion_monitor_interno.pckg = $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[2].rtr_ntrfs_.data_out_i_in;
                 transaccion_monitor_interno_mbx.put(transaccion_monitor_interno);
 
             end 
