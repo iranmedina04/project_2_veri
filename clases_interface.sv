@@ -119,8 +119,8 @@ class trans_mesh #(
         this.tiempo_recibido,
         this.ruta
         
-      )ñ
-      
+      );
+
       $display("");
         
     endfunction
