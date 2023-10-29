@@ -92,6 +92,8 @@ class driver #(
             if(vif.popin[id_terminal])
       
                 // Si hay algo en la fifo el pending está en alto
+                #1;
+                
                 dato_pop = fifo_entrada.pop();
                 
                 if (fifo_entrada.sizes() > 0) begin

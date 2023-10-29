@@ -27,7 +27,7 @@ class monitor_interno #(
             @(posedge vif.clk_i);
 
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;
@@ -39,7 +39,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;
@@ -49,7 +49,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;
@@ -59,7 +59,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;
@@ -69,7 +69,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[2].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 2;
@@ -79,7 +79,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[2].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 2;
@@ -89,7 +89,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[2].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 2;
@@ -99,7 +99,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[2].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 2;
@@ -109,7 +109,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[3].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 3;
@@ -119,7 +119,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[3].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 3;
@@ -129,7 +129,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[3].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 3;
@@ -139,7 +139,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[3].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 3;
@@ -149,7 +149,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[4].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 4;
@@ -159,7 +159,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[4].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 4;
@@ -169,7 +169,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[4].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 4;
@@ -179,7 +179,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[4].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 4;
@@ -189,7 +189,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 1;
@@ -199,7 +199,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[1].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 1;
@@ -209,7 +209,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[1].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 1;
@@ -219,7 +219,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[1].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 1;
@@ -229,7 +229,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[2].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 2;
@@ -239,7 +239,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[2].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 2;
@@ -249,7 +249,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[2].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 2;
@@ -259,7 +259,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[2].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 2;
@@ -269,7 +269,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[3].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 3;
@@ -279,7 +279,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[3].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 3;
@@ -289,7 +289,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[3].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 3;
@@ -299,7 +299,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[3].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 3;
@@ -309,7 +309,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[4].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 4;
@@ -319,7 +319,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[4].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 4;
@@ -329,7 +329,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[4].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 4;
@@ -339,7 +339,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[2]._clm_[4].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 2;
                 transaccion_monitor_interno.colum = 4;
@@ -349,7 +349,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 1;
@@ -359,7 +359,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[1].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 1;
@@ -369,7 +369,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[1].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 1;
@@ -379,7 +379,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[1].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 1;
@@ -389,7 +389,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[2].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 2;
@@ -399,7 +399,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[2].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 2;
@@ -409,7 +409,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[2].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 2;
@@ -419,7 +419,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[2].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 2;
@@ -429,7 +429,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[3].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 3;
@@ -439,7 +439,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[3].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 3;
@@ -449,7 +449,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[3].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 3;
@@ -459,7 +459,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[3].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 3;
@@ -469,7 +469,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[4].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 4;
@@ -479,7 +479,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[4].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 4;
@@ -489,7 +489,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[4].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 4;
@@ -499,7 +499,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[3]._clm_[4].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+               //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 3;
                 transaccion_monitor_interno.colum = 4;
@@ -509,7 +509,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 1;
@@ -519,7 +519,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[1].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 1;
@@ -529,7 +529,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[1].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 1;
@@ -539,7 +539,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[1].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 1;
@@ -549,7 +549,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[2].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 2;
@@ -559,7 +559,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[2].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 2;
@@ -569,7 +569,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[2].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 2;
@@ -579,7 +579,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[2].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 2;
@@ -589,7 +589,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[3].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 3;
@@ -599,7 +599,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[3].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 3;
@@ -609,7 +609,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[3].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 3;
@@ -619,7 +619,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[3].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 3;
@@ -629,7 +629,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[4].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 4;
@@ -639,7 +639,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[4].rtr._nu_[1].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 4;
@@ -649,7 +649,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[4].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 4;
@@ -659,7 +659,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[4]._clm_[4].rtr._nu_[3].rtr_ntrfs_.popin) begin 
-                $display("Estoy poniendo una transaccion");
+                //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 4;
                 transaccion_monitor_interno.colum = 4;
