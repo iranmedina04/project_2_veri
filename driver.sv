@@ -70,7 +70,7 @@ class driver #(
 
         forever begin
 
-            @(negedge vif.clk_i);
+            @(posedge vif.clk_i);
             // Saca todos los paquetes y los agrega a los filos de entrada
 
 
@@ -93,16 +93,18 @@ class driver #(
                 // Si hay algo en la fifo el pending está en alto
 
                 dato_pop = fifo_entrada.pop();
+
+                @(posedge vif.clk_i);
                 
                 if (fifo_entrada.sizes() > 0) begin
                     
                     vif.pdng_i_in[id_terminal] = '1;
-                    vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0];
+
 
                 end else begin
                     
                     vif.pdng_i_in[id_terminal] = '0;
-                    vif.dato_out_i_in [id_terminal] = '0;
+
 
                 end
 
