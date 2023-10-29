@@ -128,7 +128,7 @@ module testbench();
         @(posedge clk_i);
         @(posedge clk_i);
 
-        for (int i=0; i<1; ++i) begin
+        for (int i=0; i<2; ++i) begin
                    
                     transaccion_envio = new();   
                     transaccion_envio.randomize();
@@ -143,7 +143,7 @@ module testbench();
 
         end
 
-        while (recibidos < 1) begin
+        while (recibidos < 2) begin
             
             while(monitor_to_checker_mbx.num() < 1)begin
                 //$display("Esperando transaccion\n");
