@@ -89,7 +89,7 @@ class driver #(
             
             // Si hay un pop toma el valor
 
-            if(vif.popin[id_terminal])
+            if(vif.popin[id_terminal]) begin
       
                 // Si hay algo en la fifo el pending está en alto
 
@@ -102,7 +102,6 @@ class driver #(
                     vif.pdng_i_in[id_terminal] = '1;
                     vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0];
 
-
                 end else begin
                     
                     vif.pdng_i_in[id_terminal] = '0;
@@ -110,6 +109,8 @@ class driver #(
 
                 end
 
+
+        end
 
         end
         
