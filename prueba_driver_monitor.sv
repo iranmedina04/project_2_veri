@@ -128,7 +128,7 @@ module testbench();
         @(posedge clk_i);
         @(posedge clk_i);
 
-        for (int i=0; i<1; ++i) begin
+        for (int i=0; i<2; ++i) begin
                    
                     transaccion_envio = new();   
                     transaccion_envio.randomize();
@@ -137,8 +137,8 @@ module testbench();
                     transaccion_envio.colum = 5;
                     transaccion_envio.fun_pckg();
                     transaccion_envio.fun_ruta();
-                    //$display("Transacción Enviada\n");
-                    //transaccion_envio.print();
+                    $display("Transacción Enviada\n");
+                    transaccion_envio.print();
                     agent_to_drivers_mbx[i].put(transaccion_envio);
 
         end
