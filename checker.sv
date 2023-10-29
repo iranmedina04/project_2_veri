@@ -90,7 +90,7 @@ class chcker #(
                         end
                         else begin
                             
-                            $display("La ruta se esta cumpliendo correctamente");
+                            $display("La ruta se esta cumpliendo correctamente con el paquete: %h, este no debe pasar por la terminal de paso: %h", transaccion_mon_chckr_intermedio.pckg, transaccion_mon_chckr_intermedio.terminal_recibido);
 
                         end
                     
