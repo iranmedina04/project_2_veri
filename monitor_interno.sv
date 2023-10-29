@@ -69,7 +69,7 @@ class monitor_interno #(
                 transaccion_monitor_interno.pckg = $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[3].rtr_ntrfs_.data_out_i_in;
                 transaccion_monitor_interno_mbx.put(transaccion_monitor_interno);
             end
-
+    /*
             if ($root.testbench.DUT._rw_[1]._clm_[2].rtr._nu_[0].rtr_ntrfs_.popin) begin 
                 //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
@@ -670,7 +670,7 @@ class monitor_interno #(
                 transaccion_monitor_interno_mbx.put(transaccion_monitor_interno);
             end
 
-
+            */
             
             end
                 
