@@ -26,9 +26,9 @@ class monitor_interno #(
             
             @(posedge vif.clk_i);
             
-            $display("Dato in antes del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in;);
+            $display("Dato in antes del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in);
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Dato in despues del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in;);
+                $display("Dato in despues del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in);
                 //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
