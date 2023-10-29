@@ -34,7 +34,7 @@ class monitor_interno #(
                 transaccion_monitor_interno.terminal_recibido = {transaccion_monitor_interno.row,transaccion_monitor_interno.colum};
                 transaccion_monitor_interno.pckg = $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in;
                 $display("Transaccion antes de ponerla");
-                transaccion_monitor_interno.pckg.print();
+                transaccion_monitor_interno.print();
                 transaccion_monitor_interno_mbx.put(transaccion_monitor_interno);
             end
 
