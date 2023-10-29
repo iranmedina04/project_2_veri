@@ -24,7 +24,7 @@ class monitor_interno #(
         $display("El Monitor interno está corriendo \n");
         forever begin
 
-             $display("Dato in antes del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in);
+             $display("Dato in antes del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[3].rtr_ntrfs_.data_out_i_in);
             
             @(posedge vif.clk_i);
             
