@@ -30,7 +30,7 @@ class monitor_interno #(
             
            
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin 
-                $display("Dato in despues del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in);
+                $display("Dato in despues del pop: %h terminal:%g", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.data_out_i_in, 0);
                 //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
@@ -44,7 +44,7 @@ class monitor_interno #(
 
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[1].rtr_ntrfs_.popin) begin 
                 //$display("Estoy poniendo una transaccion");
-                $display("Dato in despues del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[1].rtr_ntrfs_.data_out_i_in);
+                $display("Dato in despues del pop: %h terminal:%g", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[1].rtr_ntrfs_.data_out_i_in, 1);
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;
@@ -54,7 +54,7 @@ class monitor_interno #(
             end
 
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[2].rtr_ntrfs_.popin) begin 
-                $display("Dato in despues del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[2].rtr_ntrfs_.data_out_i_in);
+                $display("Dato in despues del pop: %h terminal:%g", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[2].rtr_ntrfs_.data_out_i_in,2);
                 //$display("Estoy poniendo una transaccion");
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
@@ -67,7 +67,7 @@ class monitor_interno #(
 
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[3].rtr_ntrfs_.popin) begin 
                 //$display("Estoy poniendo una transaccion");
-                $display("Dato in despues del pop: %h", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[3].rtr_ntrfs_.data_out_i_in);
+                $display("Dato in despues del pop: %h terminal:%g", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[3].rtr_ntrfs_.data_out_i_in, 3);
                 transaccion_monitor_interno = new(); 
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;
