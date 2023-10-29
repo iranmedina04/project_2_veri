@@ -24,7 +24,7 @@ class monitor_interno #(
 
         forever begin
             
-            @(posedge vig.clk_i);
+            @(posedge vif.clk_i);
 
             for (int r=1; r<5; ++r) begin
                 for (int c=1; c<5; ++c) begin
