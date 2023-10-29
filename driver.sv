@@ -71,7 +71,7 @@ class driver #(
         forever begin
 
             @(posedge vif.clk_i);
-            vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0]
+            vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0];
             // Saca todos los paquetes y los agrega a los filos de entrada
 
 
