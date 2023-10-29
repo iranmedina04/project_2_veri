@@ -88,7 +88,6 @@ class driver #(
 
             
             // Si hay un pop toma el valor
-            #1;
 
             if(vif.popin[id_terminal])
       
