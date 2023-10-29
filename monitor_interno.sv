@@ -29,7 +29,8 @@ class monitor_interno #(
             //for (int r=1; r<5; ++r) begin
               //  for (int c=1; c<5; ++c) begin
                 //    for (int g=0; g<4; ++g) begin
-            $display("En este ciclo de relog el pop in es: %g \n", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin);
+            $display("En este ciclo de reloj el pop in es: %g \n", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin);
+            $display("En este ciclo de reloj el pding in es: %g \n", vif.pdng_i_in[4]);
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin
 
                  $display("Estoy poniendo una transaccion\n");
