@@ -160,7 +160,7 @@ module testbench();
                     $display("Transacción Enviada\n");
                     transaccion_envio.print();
                     agent_to_drivers_mbx[4].put(transaccion_envio);
-                    for (int i=0; i<6; ++i) begin
+                    for (int i=0; i<7; ++i) begin
                    
                          mon_sb_slocitud_interna_respuesta_mbx.put(transaccion_envio);
 
