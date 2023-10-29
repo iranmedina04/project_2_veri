@@ -30,7 +30,7 @@ class monitor_interno #(
                 for (int c=1; c<5; ++c) begin
                     for (int g=0; g<4; ++g) begin
 
-                       if ($root.testbench.DUT._rw_[r]._clm_[c].rtr._nu_[g].rtr_ntrfs_.popin) begin
+                       if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[1].rtr_ntrfs_.popin) begin
 
                             transaccion_monitor_interno = new();
                             transaccion_monitor_interno.row = r;
