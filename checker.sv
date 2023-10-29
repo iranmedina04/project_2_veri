@@ -61,7 +61,7 @@ class chcker #(
                 transaccion_mon_chckr_intermedio = new();
                 transaccion_monitor_interno_mbx.get(transaccion_mon_chckr_intermedio);
                 $display("Transaccion recibida desde el monitor interno");
-                ransaccion_mon_chckr_intermedio.print();
+                transaccion_mon_chckr_intermedio.print();
                 mon_sb_slocitud_interna_mbx.put(transaccion_mon_chckr_intermedio); // Salicita un valor al Scoreboard
 
                 while ( mon_sb_slocitud_interna_respuesta_mbx.num() > 0) begin
