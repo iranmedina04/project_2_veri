@@ -32,6 +32,7 @@ class monitor_interno #(
             $display("En este ciclo de relog el pop in es: %g \n", $root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin);
             if ($root.testbench.DUT._rw_[1]._clm_[1].rtr._nu_[0].rtr_ntrfs_.popin) begin
 
+                 $display("Estoy poniendo una transaccion\n")
                 transaccion_monitor_interno = new();
                 transaccion_monitor_interno.row = 1;
                 transaccion_monitor_interno.colum = 1;

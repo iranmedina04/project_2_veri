@@ -105,7 +105,7 @@ class trans_mesh #(
     function print();
 
       $display("El paquete posee los siguiente elementos:");
-      $display("Nex jump: %h \nRow: %h \nColum: %h \nMode: %h \nPayload: %h \nPackage: %h \nTerminal Envio: %g \nTiempo envio: %g \nTerminal recibido: %g \nTiempo recibido: %g \n Ruta:  \n",
+      $display("Nex jump: %h \nRow: %h \nColum: %h \nMode: %h \nPayload: %h \nPackage: %h \nTerminal Envio: %g \nTiempo envio: %g \nTerminal recibido: %g \nTiempo recibido: %g \n Ruta: ",
         
         this.next_jump,
         this.row,
@@ -120,6 +120,7 @@ class trans_mesh #(
         this.ruta
         
       );
+      $display("");
         
     endfunction
 
