@@ -105,7 +105,7 @@ class driver #(
                 end else begin
                     
                     vif.pdng_i_in[id_terminal] = '0;
-
+                     vif.dato_out_i_in [id_terminal] = '0;
 
                 end
 
