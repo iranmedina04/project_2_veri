@@ -152,7 +152,7 @@ module testbench();
 
             $display("Transacción Recibida %g\n", recibidos);
             transaccion_envio = new(); 
-            monitor_to_checker_mbx.get(transaccioksn_envio);
+            monitor_to_checker_mbx.get(transaccion_envio);
             transaccion_envio.print();
             recibidos = recibidos + 1;
 
