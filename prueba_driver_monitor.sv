@@ -145,7 +145,7 @@ module testbench();
         while (recibidos < 1) begin
             
             while(monitor_to_checker_mbx.num() < 1)begin
-                $display("Esperando transaccion\n");
+                //$display("Esperando transaccion\n");
                 @(posedge clk_i);
             end
 
