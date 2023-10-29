@@ -9,6 +9,7 @@
 `include "driver.sv"
 `include "monitor.sv"
 `include "monitor_interno.sv"
+`include "checker.sv"
 
 
 module testbench();
@@ -26,7 +27,7 @@ module testbench();
 
     monitor_interno #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_monitor_intern;
 
-    chcker #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_chcker;
+    chcker #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) my_chcker;
 
 
     // Transacciones
