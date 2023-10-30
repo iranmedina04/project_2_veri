@@ -70,7 +70,7 @@ class score_board #(    parameter ROWS = 4,
            #1;
             
             bw = 0; 
-            if($time > 1000000000000000)begin
+            if($time > 194000)begin
 
                 $display("Mae si era una transacciones de reporte");
                 test_sb_mailbox.get(transaccion_test);
