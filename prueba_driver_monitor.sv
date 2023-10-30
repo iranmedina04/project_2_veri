@@ -32,7 +32,7 @@ module testbench();
 
     test_agente_mbx test_agente_mbx;
 
-    test_sb_mbx test_sb_mailbox;
+    test_sb_mbx test_sb_mbx;
 
     mesh_if #(
 
@@ -67,9 +67,9 @@ module testbench();
         my_ambiente = new();
         my_ambiente.vif = _if;
         test_agente_mbx = new();
-        test_sb_mailbox = new();
+        test_sb_mbx = new();
         my_ambiente.test_agente_mbx = test_agente_mbx;
-        my_ambiente.test_sb_mailbox = test_sb_mailbox;
+        my_ambiente.test_sb_mailbox = test_sb_mbx;
         my_ambiente.virtualc();
         
         fork
