@@ -34,8 +34,8 @@ class sim_fifo #(
 
         if (this.fifo_sim.size() == FIFO_DEPTH) begin
 
-            $display("Una de las fifos de entrada se encuentra llena \nNo se cargará el dato para no hacer un ovearflow\n");
-
+            //$display("Una de las fifos de entrada se encuentra llena \nNo se cargará el dato para no hacer un ovearflow\n");
+            pass; 
         end
         else begin
             
@@ -51,8 +51,8 @@ class sim_fifo #(
 
       if (fifo_sim.size() == 0) begin
             
-            $display("Una de las fifos se encuentra vacía \nNo se realizará el pop\n");
-
+            //$display("Una de las fifos se encuentra vacía \nNo se realizará el pop\n");
+            pass;
         end
         else begin
             
