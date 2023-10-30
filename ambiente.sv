@@ -153,8 +153,7 @@ class ambiente #(
         my_monitor_intern.vif = vif;
         my_agente.vif = vif;
         my_chcker.vif = vif;
-        my_agente.test_agente_mbx = test_agente_mbx;
-        my_sb.test_sb_mailbox = test_sb_mailbox;
+
         for (int i=0; i<16; ++i) begin
             
             my_drivers[i].vif = vif;
@@ -165,6 +164,10 @@ class ambiente #(
     endfunction
 
     function  run();
+
+        test_sb_mailbox = new();
+        my_agente.test_agente_mbx = test_agente_mbx;
+        my_sb.test_sb_mailbox = test_sb_mailbox;
 
         for (int i=0; i < 16; ++i) begin
 
