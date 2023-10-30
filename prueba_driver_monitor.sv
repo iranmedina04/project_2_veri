@@ -32,7 +32,7 @@ module testbench();
 
     test_agente_mbx test_agente_mbx;
 
-    test_sb_mailbox test_sb_mailbox;
+    test_sb_mbx test_sb_mailbox;
 
     mesh_if #(
 
