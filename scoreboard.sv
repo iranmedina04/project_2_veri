@@ -170,7 +170,7 @@ class score_board #(    parameter ROWS = 4,
                         
                         if(enviado_agente[i].dato_enviado[PAKG_SIZE-9:0] == dato_monitor.dato_recibido[PAKG_SIZE-9:0])begin
                             if (enviado_agente[i].terminal_recibido == dato_monitor.terminal_recibido) begin
-                                if(enviado_agente[i].t_envio < dato_monitor.t_recibido)begin
+                                if(enviado_agente[i].tiempo_envio < dato_monitor.tiempo_recibido)begin
                                     
                                     dato_viejo = new();
                                     dato_viejo = enviado_agente[i];
@@ -213,7 +213,7 @@ class score_board #(    parameter ROWS = 4,
                         
                         if(enviado_agente[i].dato_enviado[PAKG_SIZE-9:0] == dato_monitor2.dato_recibido[PAKG_SIZE-9:0])begin
                             if (enviado_agente[i].terminal_recibido == dato_monitor2.terminal_recibido) begin
-                                if(enviado_agente[i].t_envio < dato_monitor2.t_recibido)begin
+                                if(enviado_agente[i].tiempo_envio < dato_monitor2.tiempo_recibido)begin
                                     
                                     dato_viejo2 = new();
                                     dato_viejo2 = enviado_agente[i];
