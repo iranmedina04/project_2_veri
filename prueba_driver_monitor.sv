@@ -30,6 +30,10 @@ module testbench();
 
     instrucciones_test_sb instrucciones_test_sb;
 
+    test_agente_mbx test_agente_mbx;
+
+    test_sb_mailbox test_sb_mailbox;
+
     mesh_if #(
 
     .ROWS(ROWS),
