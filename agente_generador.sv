@@ -39,7 +39,7 @@ class agente #(     parameter ROWS = 4,
     
 
     task run;
-      $display("[%g] El agente fue inicializado",$time);
+      $display("Agente run \n");
      
       @(posedge vif.clk_i);
       @(posedge vif.clk_i);

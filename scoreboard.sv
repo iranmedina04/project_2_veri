@@ -61,7 +61,7 @@ class score_board #(    parameter ROWS = 4,
 
         task run ();
 
-        $display("Se inicializó el scoreboard");
+        $display("Scoreboard run\n");
         
 
         forever begin
