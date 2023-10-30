@@ -64,7 +64,8 @@ class trans_mesh #(
     rand int terminal_envio;
     int tiempo_envio;
     int tiempo_recibido;
-    int terminal_recibido; 
+    int terminal_recibido;
+    rand int tiempo_retardo; 
     logic [7:0] posicion_actual;
     logic [3: 0]  row2;
     logic [3 : 0] colum2;
@@ -75,6 +76,7 @@ class trans_mesh #(
     constraint c2 { row == 0 -> colum < 6 ; row == 0 -> colum >= 0; row == 5 -> colum < 6 ; row == 5 -> colum >= 0;  row != 0 -> colum == 0 ; row != 0 -> colum == 5;}
     constraint c3 {mode >= 0; mode < 2;}
   	constraint c4 {terminal_envio >= 0 ; terminal_envio < 16;}
+    constraint c5 {tiempo_retardo < 10; tiempo_retardo>=0;}
 
     // Funcion de inicialización del objeto
 
@@ -466,4 +468,59 @@ class trans_mesh #(
 
 endclass
 
+class trans_sb #( //Definición de la clase de transacciones del scoreboard
+
+                parameter ROWS = 4,
+                parameter COLUMNS = 4,  
+                parameter PAKG_SIZE = 32,
+                parameter FIFO_DEPTH = 16                 
+);
+
+    logic [PAKG_SIZE - 1 : 0] pckg;
+    int tiempo_envio;
+    int tiempo_recibido;
+    int terminal_envio;
+    int terminal_recibido; 
+    int latencia;
+    
+
+    function new(); //Función para crear una nueva transacción del scoreboard
+
+        this.pckg  = 0;
+        this.tiempo_envio = 0;
+        this.tiempo_recibido = 0;
+        this.terminal_envio =0;
+        this.terminal_recibido = 0;
+        this.latencia = 0; 
+        
+    endfunction
+
+    function cal_latencia(); //Función para calcular la latencia
+        
+        this.latencia = this.tiempo_recibido - this.tiempo_envio;
+        
+    endfunction
+
+    function print(); //Función para imprimir la transacción
+        
+        $display("El paquete del Sb posee: \n Paquete: [%h], Tiempo envio: [%t] \n Tiempo recibido: [%t] \n Terminal envio: [%g] \n Terminal recibido: [%g] \n Latencia: [%g] \n",
+        
+        this.pckg,
+        this.tiempo_envio,
+        this.tiempo_recibido,
+        this.terminal_envio,
+        this.terminal_recibido,
+        this.latencia
+        
+        );
+        
+    endfunction
+
+endclass
+
+typedef mailbox #(trans_sb) trans_sb_mbx; //Define el mailbox de las transacciones del scoreboard
+typedef enum {reporte} instrucciones_test_sb; //Define las instrucciones que le puede enviar el test al scoreboard
 typedef mailbox #(trans_mesh) trans_mbx;
+typedef enum {un_paquete,varios_dispositivos_envio_recibido,llenado_fifos,envio_fuera_de_rango,reset_inicio,reset_mitad,reset_final,autoenvio} instrucciones_agente; //Define las instrucciones del agente
+typedef mailbox #(instrucciones_agente) test_agente_mbx; //Define el mailbox entre el test y el agente
+typedef mailbox #(instrucciones_test_sb) test_sb_mbx; //Define el mailbox entre el test y el scoreboard
