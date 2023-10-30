@@ -161,7 +161,6 @@ class score_board #(    parameter ROWS = 4,
                 while (chkr_sb_solicitud.num() > 0) begin
 
                     this.paquetes_encontrados = 0;
-                    this.paquetes_encontrados_internos = 0;
                     dato_monitor = new();
                     chkr_sb_solicitud.get(dato_monitor);
 
