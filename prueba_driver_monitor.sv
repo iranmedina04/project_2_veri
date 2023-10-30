@@ -95,7 +95,7 @@ module testbench();
 
         instrucciones_test_sb = reporte;
 
-        test_sb_mailbox.put(instrucciones_test_sb);
+        test_sb_mbx.put(instrucciones_test_sb);
 
         repeat (10) begin
         
