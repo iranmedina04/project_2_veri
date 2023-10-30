@@ -60,7 +60,7 @@ class agente #(     parameter ROWS = 4,
                                 espera = espera + 1;
                             end
                             transaccion.tiempo_envio  = $time;
-                            transaccion.print();
+                            //transaccion.print();
                             agente_drv_mbx[transaccion.terminal_envio].put(transaccion); //Envía la transacción al mailbox del agente al driver en la posición de la terminal de envío
                             transaccion_copia = new();
                             transaccion_copia = transaccion;
@@ -81,7 +81,7 @@ class agente #(     parameter ROWS = 4,
                             end
                             
                             transaccion.tiempo_envio  = $time;
-                            transaccion.print();
+                            //transaccion.print();
                             agente_drv_mbx[transaccion.terminal_envio].put(transaccion);
                             transaccion_copia = new();
                             transaccion_copia = transaccion;
@@ -120,7 +120,7 @@ class agente #(     parameter ROWS = 4,
                                 espera = espera +1;
                             end
                             transaccion.tiempo_envio  = $time;
-                            transaccion.print();
+                            //transaccion.print();
                             agente_drv_mbx[transaccion.terminal_envio].put(transaccion);
                             transaccion_copia = new();
                             transaccion_copia = transaccion;
@@ -145,7 +145,7 @@ class agente #(     parameter ROWS = 4,
                             end
                             
                             transaccion.tiempo_envio  = $time;
-                            transaccion.print();
+                            //transaccion.print();
                             agente_drv_mbx[transaccion.terminal_envio].put(transaccion);
                             transaccion_copia = new();
                             transaccion_copia = transaccion;
@@ -167,7 +167,7 @@ class agente #(     parameter ROWS = 4,
                             end
                             
                             transaccion.tiempo_envio  = $time;
-                            transaccion.print();
+                            //transaccion.print();
                             agente_drv_mbx[transaccion.terminal_envio].put(transaccion);
                             transaccion_copia = new();
                             transaccion_copia = transaccion;
@@ -189,7 +189,7 @@ class agente #(     parameter ROWS = 4,
                             end
                             
                             transaccion.tiempo_envio  = $time;
-                            transaccion.print();
+                            //transaccion.print();
                             agente_drv_mbx[transaccion.terminal_envio].put(transaccion);
                             transaccion_copia = new();
                             transaccion_copia = transaccion;
@@ -211,7 +211,7 @@ class agente #(     parameter ROWS = 4,
                             end
                             
                             transaccion.tiempo_envio  = $time;
-                            transaccion.print();
+                            //transaccion.print();
                             agente_drv_mbx[transaccion.terminal_envio].put(transaccion);
                             transaccion_copia = new();
                             transaccion_copia = transaccion;
