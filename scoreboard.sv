@@ -44,7 +44,7 @@ class score_board #(    parameter ROWS = 4,
     trans_sb #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) dato_verificado;
     trans_sb #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) transaccion_auxiliar;  // Las revisadas y realizadas correctamente
 
-     instrucciones_test_sb transaccion_test;
+    instrucciones_test_sb transaccion_test;
 
     int paquetes_encontrados;
     int paquetes_encontrados2;
