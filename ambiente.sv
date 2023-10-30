@@ -97,8 +97,8 @@ class ambiente #(
 
         for (int i=0; i<16; ++i) begin
             
-            my_drivers[i] = new();
-            my_monitors[i] = new();
+            my_drivers[i] = new(.id(i));
+            my_monitors[i] = new(.id(i));
 
         end
 

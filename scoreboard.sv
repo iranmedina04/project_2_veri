@@ -120,10 +120,10 @@ class score_board #(    parameter ROWS = 4,
 
                         tpromedio = tiempo / verificadas.size();
 
-                        bw = width * 10e9 / (tpromedio);                       
+                        bw =  PAKG_SIZE * 10e9 / (tpromedio);                       
                         
 
-                        $display("Para una prueba con Terminales: [%g], Profundidad: [%g], Ancho de palabra: [%g], Tiempo promedio: [%g], Ancho de banda: [%g] \n Se imprimió el reporte", drivers, profundidad, width, tpromedio, bw );
+                        //$display("Para una prueba con Terminales: [%g], Profundidad: [%g], Ancho de palabra: [%g], Tiempo promedio: [%g], Ancho de banda: [%g] \n Se imprimió el reporte", drivers, profundidad, PAKG_SIZE, tpromedio, bw );
 
                         archivo_2 = $fopen("Reporte_Anchos_de_banda_Tiempo_promedio.csv", "a" );
 
