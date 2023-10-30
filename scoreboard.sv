@@ -91,17 +91,15 @@ class score_board #(    parameter ROWS = 4,
                             transaccion_auxiliar = verificadas[i];
                             tiempo = tiempo + transaccion_auxiliar.latencia;
                             
-                            $sformat(linea_agregar, "%h,%g,%g,%g,%g,%g,%g,%g\n", 
+                            $sformat(linea_agregar, "%h,%g,%g,%g,%g,%g,%g\n", 
                             
                             transaccion_auxiliar.pckg,
-                            transaccion_auxiliar.t_envio,
-                            transaccion_auxiliar.t_recibido,
+                            transaccion_auxiliar.tiempo_envio,
+                            transaccion_auxiliar.tiempo_recibido,
                             transaccion_auxiliar.terminal_envio,
                             transaccion_auxiliar.terminal_recibido,
                             transaccion_auxiliar.latencia,
-                            transaccion_auxiliar.prof,
-                            transaccion_auxiliar.dispositivos
-                                                
+                            FIFO_DEPTH          
                             );
 
                             informacion.push_back(linea_agregar);
