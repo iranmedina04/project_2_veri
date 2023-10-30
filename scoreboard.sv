@@ -168,8 +168,8 @@ class score_board #(    parameter ROWS = 4,
                     
                     for (int i=0; i < enviado_agente.size(); ++i) begin
                         
-                        if(enviado_agente[i].dato_enviado[PAKG_SIZE-9:0] == dato_monitor.dato_recibido[PAKG_SIZE-9:0])begin
-                            if (enviado_agente[i].terminal_recibido == dato_monitor.terminal_recibido) begin
+                        if(enviado_agente[i].pckg[PAKG_SIZE-9:0] == dato_monitor.pckg[PAKG_SIZE-9:0])begin
+
                                 if(enviado_agente[i].tiempo_envio < dato_monitor.tiempo_recibido)begin
                                     
                                     dato_viejo = new();
@@ -182,7 +182,7 @@ class score_board #(    parameter ROWS = 4,
 
                                 end
                         end
-                    end
+
                     end
                             
                     
@@ -195,6 +195,7 @@ class score_board #(    parameter ROWS = 4,
                     end
                     
                 end
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Buscador de la ruta
@@ -211,8 +212,7 @@ class score_board #(    parameter ROWS = 4,
                     
                     for (int i=0; i < enviado_agente.size(); ++i) begin
                         
-                        if(enviado_agente[i].dato_enviado[PAKG_SIZE-9:0] == dato_monitor2.dato_recibido[PAKG_SIZE-9:0])begin
-                            if (enviado_agente[i].terminal_recibido == dato_monitor2.terminal_recibido) begin
+                        if(enviado_agente[i].pckg[PAKG_SIZE-9:0] == dato_monitor2.pckg[PAKG_SIZE-9:0])begin
                                 if(enviado_agente[i].tiempo_envio < dato_monitor2.tiempo_recibido)begin
                                     
                                     dato_viejo2 = new();
@@ -225,7 +225,7 @@ class score_board #(    parameter ROWS = 4,
 
                                 end
                         end
-                    end
+
                     end
                             
                     
