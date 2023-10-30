@@ -63,7 +63,7 @@ class ambiente #(
 
     test_agente_mbx test_agente_mbx;
 
-    trans_mesh_mbx  #(.PAKG_SIZE(PAKG_SIZE)) agente_sb_mbx;
+    trans_mbx  #(.PAKG_SIZE(PAKG_SIZE)) agente_sb_mbx;
 
     // Scoreboard 
 
