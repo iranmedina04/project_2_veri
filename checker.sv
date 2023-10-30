@@ -129,7 +129,7 @@ class chcker #(
                             trans_sb.terminal_envio = transaccion_mon_sb_slocitud_final_respuesta_final.terminal_envio;
                             trans_sb.terminal_recibido = transaccion_mon_chckr_final.terminal_recibido;
                             trans_sb.tiempo_envio = transaccion_mon_sb_slocitud_final_respuesta_final.tiempo_envio;
-                            trans_sb.tiempo_recibido transaccion_mon_chckr_final.tiempo_recibido;
+                            trans_sb.tiempo_recibido = transaccion_mon_chckr_final.tiempo_recibido;
                             trans_sb.cal_latencia();
                             trans_sb_mbx.put(trans_sb);
 
