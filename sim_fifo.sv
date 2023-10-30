@@ -21,6 +21,7 @@ class sim_fifo #(
     logic [PAKG_SIZE - 1 : 0] fifo_sim [$];
     logic [PAKG_SIZE - 1 : 0] d_out;
     int size;
+    int pass;
     int id_terminal;
 
     function  new(int id = 0);
@@ -35,7 +36,7 @@ class sim_fifo #(
         if (this.fifo_sim.size() == FIFO_DEPTH) begin
 
             //$display("Una de las fifos de entrada se encuentra llena \nNo se cargará el dato para no hacer un ovearflow\n");
-            pass; 
+            pass = 0;
         end
         else begin
             
@@ -52,7 +53,7 @@ class sim_fifo #(
       if (fifo_sim.size() == 0) begin
             
             //$display("Una de las fifos se encuentra vacía \nNo se realizará el pop\n");
-            pass;
+            pass = 0;
         end
         else begin
             
