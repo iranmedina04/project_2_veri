@@ -87,7 +87,7 @@ module testbench();
         instrucciones_agente = llenado_fifos;
         test_agente_mbx.put(instrucciones_agente);
 
-        repeat (10000000000000000000) begin
+        repeat (1000000000000000) begin
         
             @(posedge _if.clk_i);
         

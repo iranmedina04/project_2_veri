@@ -74,7 +74,7 @@ class score_board #(    parameter ROWS = 4,
 
                 $display("Mae si era una transacciones de reporte");
                 test_sb_mailbox.get(transaccion_test);
-                
+                transaccion_test = reporte;
                 case (transaccion_test)
                     
                     reporte: begin
