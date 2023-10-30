@@ -123,7 +123,7 @@ class ambiente #(
         my_chcker.mon_sb_slocitud_final_respuesta_final_mbx = mon_sb_slocitud_final_respuesta_final_mbx;
         my_chcker.mon_sb_slocitud_interna_respuesta_mbx = mon_sb_slocitud_interna_respuesta_mbx;
         my_chcker.trans_sb_mbx = trans_sb_mbx;
-        my_chcker.vif = vif;
+
 
         // Conexion de Scoreboard
 
@@ -140,13 +140,27 @@ class ambiente #(
         my_agente.agente_drv_mbx = agent_to_drivers_mbx;
         my_agente.agente_sb_mbx = agente_sb_mbx;
         my_agente.test_agente_mbx = test_agente_mbx;
-        my_agente.vif = vif;
+        
 
         // Conexion monitor interno
 
         my_monitor_intern.transaccion_monitor_interno_mbx = transaccion_monitor_interno_mbx;
-        my_monitor_intern.vif = vif;
+        
 
+    endfunction
+
+    function  virtualc ();
+
+        my_monitor_intern.vif = vif;
+        my_agente.vif = vif;
+        my_chcker.vif = vif;
+        for (int i=0; i<16; ++i) begin
+            
+            my_drivers[i].vif = vif;
+            my_monitors[i].vif = vif;
+
+        end
+        
     endfunction
 
     function  run();

@@ -63,12 +63,12 @@ module testbench();
 
     initial begin
 
-        my_ambiente.vif = _if;
+      
         my_ambiente = new();
+        my_ambiente.vif = _if;
+        my_ambiente.virtualc();
         my_ambiente.test_agente_mbx = test_agente_mbx;
         my_ambiente.test_sb_mailbox = test_sb_mailbox;
-
-
 
         fork
             
