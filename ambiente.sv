@@ -80,9 +80,8 @@ class ambiente #(
         mon_sb_slocitud_final_respuesta_final_mbx = new(); //
         mon_sb_slocitud_interna_respuesta_mbx = new(); //
         trans_sb_mbx = new();
-        test_agente_mbx = new(); //
         agente_sb_mbx = new();
-        test_sb_mailbox = new();
+
 
         for (int i=0; i<16; ++i) begin
             

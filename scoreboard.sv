@@ -77,7 +77,8 @@ class score_board #(    parameter ROWS = 4,
                 case (transaccion_test)
                     
                     reporte: begin
-                        //$display("Mae si era una transacciones de reporte");
+                        
+                        $display("Mae si era una transacciones de reporte");
                         tiempo = 0;
                         linea = "";
                         linea_agregar = "";
@@ -133,6 +134,7 @@ class score_board #(    parameter ROWS = 4,
 
                         $fclose(archivo_2);
 
+                        $display("Se imprimió el reporte");
                     
                     end
 
