@@ -70,7 +70,7 @@ module testbench();
 
         fork
             
-            ambiente.run();
+            my_ambiente.run();
 
         join_none
 
