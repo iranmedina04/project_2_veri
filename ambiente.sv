@@ -132,13 +132,13 @@ class ambiente #(
         my_sb.sc_ckr_encontrado = mon_sb_slocitud_final_respuesta_final_mbx;
         my_sb.sc_ckr_encontrado2 = mon_sb_slocitud_interna_respuesta_mbx;
         my_sb.chkr_sb_verificado = trans_sb_mbx;
-        my_sb.test_sb_mailbox = test_sb_mailbox;
+
 
         // Conexion de agente
 
         my_agente.agente_drv_mbx = agent_to_drivers_mbx;
         my_agente.agente_sb_mbx = agente_sb_mbx;
-        my_agente.test_agente_mbx = test_agente_mbx;
+
         
 
         // Conexion monitor interno
@@ -153,6 +153,8 @@ class ambiente #(
         my_monitor_intern.vif = vif;
         my_agente.vif = vif;
         my_chcker.vif = vif;
+        my_agente.test_agente_mbx = test_agente_mbx;
+        my_sb.test_sb_mailbox = test_sb_mailbox;
         for (int i=0; i<16; ++i) begin
             
             my_drivers[i].vif = vif;
