@@ -10,6 +10,9 @@
 `include "monitor.sv"
 `include "monitor_interno.sv"
 `include "checker.sv"
+`include "scoreboard.sv"
+`include "agente_generador.sv"
+`include "ambiente.sv"
 
 
 module testbench();
@@ -21,40 +24,11 @@ module testbench();
     parameter PAKG_SIZE = 32;
     parameter FIFO_DEPTH = 16;
 
-    driver #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) my_drivers [15 :0];
+    ambiente #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) my_ambiente;
 
-    monitor #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_monitors [15 :0];
+    instrucciones_agente instrucciones_agente;
 
-    monitor_interno #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH) ) my_monitor_intern;
-
-    chcker #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) my_chcker;
-
-
-    // Transacciones
-
-    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_envio;
-
-    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_recibido;
-
-    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_interna;
-
-    // Mailboxes
-
-    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) agent_to_drivers_mbx [15 : 0];
-
-    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) monitor_to_checker_mbx;
-
-    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) monitor_interno_mbx; 
-
-    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion_mon_sb_slocitud_interna; // Es del checker
-
-    trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) mon_sb_slocitud_interna_mbx;    
-
-     trans_mbx #(.PAKG_SIZE(PAKG_SIZE)) mon_sb_slocitud_interna_respuesta_mbx;
-    
-    // Interfaces
-
-    int recibidos = 0;
+    instrucciones_test_sb instrucciones_test_sb;
 
     mesh_if #(
 
@@ -85,116 +59,43 @@ module testbench();
 
     initial begin
 
-         monitor_to_checker_mbx = new();
-         monitor_interno_mbx = new();
-         my_monitor_intern = new();
-         my_chcker = new();
-         my_monitor_intern.transaccion_monitor_interno_mbx = monitor_interno_mbx;
-         my_chcker.transaccion_monitor_interno_mbx = monitor_interno_mbx;
-         mon_sb_slocitud_interna_mbx = new();
-         my_chcker.mon_sb_slocitud_interna_mbx = mon_sb_slocitud_interna_mbx;
-         mon_sb_slocitud_interna_respuesta_mbx = new();
-         my_chcker.mon_sb_slocitud_interna_respuesta_mbx = mon_sb_slocitud_interna_respuesta_mbx;
-         my_chcker.mon_chckr_mbx =  monitor_to_checker_mbx;
-         my_monitor_intern.vif = _if;
-         my_chcker.vif = _if;
-
-
-        for (int i = 0; i < 16; ++i) begin
-            
-            my_drivers[i] = new(.id(i));
-            my_monitors[i] = new(.id(i));
-            agent_to_drivers_mbx[i] = new();
-           
-            my_drivers[i].agnt_drv_mbx = agent_to_drivers_mbx[i];
-            my_monitors[i].mon_chckr_mbx = monitor_to_checker_mbx;
-            my_drivers[i].vif = _if;
-            my_monitors[i].vif = _if;
-
-        end
-
-        for (int i=0; i < 16; ++i) begin
-
-            fork
-
-                automatic int terminales = i;
-
-                begin
-
-                    my_drivers[terminales].run();
-
-
-                end  
-
-                begin
-
-                    my_monitors[terminales].run();
-
-                end
-  
-            join_none
-            
-        end
+        ambiente.test_agente_mbx = test_agente_mbx;
+        ambiente.test_sb_mailbox = test_sb_mailbox;
+        ambiente.vif = _if;
+        ambiente = new();
 
         fork
-
-            my_monitor_intern.run();
-            my_chcker.run();
             
+            ambiente.run();
+
         join_none
 
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-        @(posedge clk_i);
-
-        for (int i=0; i<1; ++i) begin
-                   
-                    transaccion_envio = new();   
-                    transaccion_envio.randomize();
-                    transaccion_envio.terminal_envio = 4;
-                    transaccion_envio.row = 4;
-                    transaccion_envio.colum = 5;
-                    transaccion_envio.fun_pckg();
-                    transaccion_envio.fun_ruta();
-                    $display("Transacción Enviada\n");
-                    transaccion_envio.print();
-                    agent_to_drivers_mbx[4].put(transaccion_envio);
-                    for (int i=0; i<7; ++i) begin
-                   
-                         mon_sb_slocitud_interna_respuesta_mbx.put(transaccion_envio);
-
-                    end
-
-        end
-
-  
-
-        while (recibidos < 1) begin
-            
-            while(monitor_to_checker_mbx.num() < 1)begin
-                //$display("Esperando transaccion\n");
-                @(posedge clk_i);
-            end
-
-            $display("Transacción Recibida %g\n", recibidos);
-            transaccion_envio = new(); 
-            monitor_to_checker_mbx.get(transaccion_envio);
-            transaccion_envio.print();
-            recibidos = recibidos + 1;
-
-        end
-
-        repeat(100) begin
+        repeat (10) begin
         
-            @(posedge clk_i);
+            @(posedge _if.clk_i);
         
         end
 
-        $finish;            
-           
+        instrucciones_agente = llenado_fifos;
+        test_agente_mbx.put(instrucciones_agente);
 
+        repeat (100000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
 
+        instrucciones_test_sb = reporte;
+
+        test_sb_mailbox.put(instrucciones_test_sb);
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        $finish;
 
     end
 
