@@ -72,6 +72,7 @@ class score_board #(    parameter ROWS = 4,
             bw = 0; 
             if(test_sb_mailbox.num() > 0)begin
 
+                $display("Mae si era una transacciones de reporte");
                 test_sb_mailbox.get(transaccion_test);
                 
                 case (transaccion_test)
