@@ -63,10 +63,11 @@ module testbench();
 
     initial begin
 
+
+        ambiente = new();
         ambiente.test_agente_mbx = test_agente_mbx;
         ambiente.test_sb_mailbox = test_sb_mailbox;
         ambiente.vif = _if;
-        ambiente = new();
 
         fork
             
