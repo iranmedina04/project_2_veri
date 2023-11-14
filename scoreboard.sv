@@ -242,6 +242,7 @@ class score_board #(    parameter ROWS = 4,
 
                     dato_verificado = new();
                     chkr_sb_verificado.get(dato_verificado);
+                    $display("Se guardó el paquete en el scoreboard: %h", dato_verificado);
                     verificadas.push_back(dato_verificado);
 
                 end
