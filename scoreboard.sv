@@ -151,6 +151,7 @@ class score_board #(    parameter ROWS = 4,
             else begin
                 while (agnt_sb_mbx.num() > 0) begin
 
+                    $display("Mae si me estan llegando transacciones del agente");
                     dato_agente = new();
                     agnt_sb_mbx.get(dato_agente);
                     enviado_agente.push_back(dato_agente);
@@ -162,7 +163,7 @@ class score_board #(    parameter ROWS = 4,
                     this.paquetes_encontrados = 0;
                     dato_monitor = new();
                     chkr_sb_solicitud.get(dato_monitor);
-
+                    $display("Mae si me estan llegando transacciones del checker solicitades");
                                 
                     
                     for (int i=0; i < enviado_agente.size(); ++i) begin
@@ -203,6 +204,7 @@ class score_board #(    parameter ROWS = 4,
               
                 while (chkr_sb_solicitud_interna.num() > 0) begin
 
+                    $display("Mae si me estan llegando transacciones del checker solicitades 2");
                     this.paquetes_encontrados2 = 0;
                     dato_monitor2 = new();
                     chkr_sb_solicitud.get(dato_monitor2);
