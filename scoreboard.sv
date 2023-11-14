@@ -148,6 +148,7 @@ class score_board #(    parameter ROWS = 4,
 
 
             end
+            else begin
                 while (agnt_sb_mbx.num() > 0) begin
 
                     dato_agente = new();
