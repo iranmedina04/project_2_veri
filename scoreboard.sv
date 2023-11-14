@@ -249,6 +249,7 @@ class score_board #(    parameter ROWS = 4,
                 end
                 
             end
+        end    
  
     endtask 
     
