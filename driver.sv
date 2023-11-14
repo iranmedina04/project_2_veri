@@ -59,6 +59,7 @@ class driver #(
     task  run ();
 
         // Reset de inicio y valores iniciales 
+
         $display("Driver %g run", id_terminal);
         vif.dato_out_i_in [id_terminal] = '0;
         vif.pdng_i_in [id_terminal] = '0;
@@ -80,6 +81,7 @@ class driver #(
                 transaccion_agente = new();
                 agnt_drv_mbx.get(transaccion_agente);
                 fifo_entrada.push(transaccion_agente.pckg);
+                $display("Se puso en la cola de envio el paquete %h en el tiempo %g en la terminal: %g \n", transaccion_agente.pckg , $time, id_terminal);
                 vif.pdng_i_in[id_terminal] = '1;
                 vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0];
 

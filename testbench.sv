@@ -1,16 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////// 
-////// El siguiente archivo posee el testbench en el cual se llaman todas las clases creadas y se instancia el dispositivo
-////// y se envía la instrucción al agente para que las pruebas empiecen, además aquí se realiza la covertura funcional
-//////
-////// Autores:
-//////  Irán Medina Aguilar
-//////  Ivannia Fernandez Rodriguez
-//////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 `timescale 10ns/1ps
 `define FIFOS
 `include "fifo.sv"
@@ -21,31 +8,46 @@
 `include "sim_fifo.sv"
 `include "driver.sv"
 `include "monitor.sv"
-`include "clases_interface.sv"
+`include "monitor_interno.sv"
 `include "checker.sv"
 `include "scoreboard.sv"
 `include "agente_generador.sv"
 `include "ambiente.sv"
-`include "test.sv"
-`include "my_package.sv"
-`default_nettype none
 
-module test_bench();
 
-    reg clk = 0;
+module testbench();
 
-    import my_package::*;
+    reg clk_i = 0;
 
-    //Definición de la variable virtual
-    mesh_if #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) _if(.clk_i(clk));
-    
-    always #5 clk = ~clk;
+    parameter ROWS = 4;
+    parameter COLUMNS = 4;  
+    parameter PAKG_SIZE = 32;
+    parameter FIFO_DEPTH = 16;
 
-    //Definición del test
-    test #(.ROWS(my_package::ROWS), .COLUMNS(my_package::COLUMNS), .PAKG_SIZE(my_package::PAKG_SIZE), .FIFO_DEPTH(my_package::FIFO_DEPTH)) test_inst;
-    
-    //Instancia del dispositivo
-    mesh_gnrtr #(.ROWS(my_package::ROWS), .COLUMS(my_package::COLUMNS), .pckg_sz(my_package::PAKG_SIZE), .fifo_depth(my_package::FIFO_DEPTH), .bdcst(my_package::BROADCAST)) DUT 
+    ambiente #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) my_ambiente;
+
+    instrucciones_agente instrucciones_agente;
+
+    instrucciones_test_sb instrucciones_test_sb;
+
+    test_agente_mbx test_agente_mbx;
+
+    test_sb_mbx test_sb_mbx;
+
+    mesh_if #(
+
+    .ROWS(ROWS),
+    .COLUMNS(COLUMNS),  
+    .PAKG_SIZE(PAKG_SIZE),
+    .FIFO_DEPTH(FIFO_DEPTH)
+
+    ) _if (
+
+        .clk_i(clk_i)
+
+    );
+
+    mesh_gnrtr #(.ROWS(ROWS), .COLUMS(COLUMNS), .pckg_sz(PAKG_SIZE), .fifo_depth(FIFO_DEPTH), .bdcst({8{1'b1}})) DUT 
     (
         .pndng(_if.pndng),
         .data_out(_if.data_out),
@@ -56,17 +58,53 @@ module test_bench();
         .clk(_if.clk_i),
         .reset(_if.rst_i)
     );
-   
-    //Inicialización del test
+
+    always #5 clk_i = ~clk_i;
 
     initial begin
-       
+
+      
+        my_ambiente = new();
+        my_ambiente.vif = _if;
+        test_agente_mbx = new();
+        test_sb_mbx = new();
+        my_ambiente.test_agente_mbx = test_agente_mbx;
+        my_ambiente.test_sb_mailbox = test_sb_mbx;
+        my_ambiente.virtualc();
         
-        test_inst = new(); 
-        test_inst.vif = _if;
-        test_inst.ambiente_inst.vif = _if;
-        test_inst.run();
-       
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_agente = llenado_fifos;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_test_sb = reporte;
+
+        test_sb_mbx.put(instrucciones_test_sb);
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        $finish;
+
     end
 
     

@@ -73,6 +73,7 @@ class monitor #(
                 transaccion_checker.tiempo_recibido = $time;
                 transaccion_checker.terminal_recibido = id_terminal;
                 transaccion_checker.pckg = vif.data_out[id_terminal];
+                $display("Se recicbio el paquete %h en el tiempo %g en la terminal: %g \n", transaccion_checker.pckg , $time, id_terminal);
                 fifo_salida.push(transaccion_checker.pckg);
                 mon_chckr_mbx.put(transaccion_checker);
                 vif.pop[id_terminal] = '1;
