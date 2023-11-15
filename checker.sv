@@ -119,7 +119,7 @@ class chcker #(
                 mon_sb_slocitud_interna_mbx.put(transaccion_mon_chckr_final);
 
                 while(mon_sb_slocitud_final_respuesta_final_mbx.num() > 0); begin
-
+                    $display("Espera la respuest del scoreboard");
                     transaccion_mon_sb_slocitud_final_respuesta_final = new();
                     mon_sb_slocitud_final_respuesta_final_mbx.get(transaccion_mon_sb_slocitud_final_respuesta_final);
 
