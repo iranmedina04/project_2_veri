@@ -154,8 +154,6 @@ class score_board #(    parameter ROWS = 4,
             enviado_agente.push_back(dato_agente);
 
         end  
-        
-        $display("Solicutudes: %g",chkr_sb_solicitud.num());
 
         while (chkr_sb_solicitud.num() > 0) begin
 
