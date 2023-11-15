@@ -87,6 +87,7 @@ class chcker #(
                         //$display("");
 
                         for (int i=0; i< transaccion_mon_sb_slocitud_interna_respuesta.ruta.size(); ++i) begin
+                                
                                 if( transaccion_mon_sb_slocitud_interna_respuesta.ruta[i] == transaccion_mon_chckr_intermedio.terminal_recibido) begin
                                     
                                     match = match + 1;
@@ -143,7 +144,7 @@ class chcker #(
                 if(match < 1)
                         begin
                             
-                            $display("Error con el paquete: %h, este no debe pasar por la terminal: %h", transaccion_mon_chckr_final.pckg, transaccion_mon_chckr_final.terminal_recibido);
+                            $display("Error con el paquete: %h, este no debe llegar a la terminal: %h", transaccion_mon_chckr_final.pckg, transaccion_mon_chckr_final.terminal_recibido);
                             $finish; 
 
                         end

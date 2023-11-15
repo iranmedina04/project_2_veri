@@ -207,7 +207,7 @@ class score_board #(    parameter ROWS = 4,
                         dato_viejo2 = new();
                         dato_viejo2 = enviado_agente[i];
                                     
-
+                        dato_viejo2.fun_ruta();
                         sc_ckr_encontrado2.put(dato_viejo2);
                     
                         this.paquetes_encontrados2 = this.paquetes_encontrados2 + 1;
