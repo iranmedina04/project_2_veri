@@ -140,7 +140,6 @@ class ambiente #(
         
 
         // Conexion monitor interno
-        my_agente.test_agente_mbx = test_agente_mbx;
         //my_sb.test_sb_mailbox = test_sb_mailbox;
 
         my_monitor_intern.transaccion_monitor_interno_mbx = transaccion_monitor_interno_mbx;
@@ -165,8 +164,7 @@ class ambiente #(
 
     function  run();
 
-        agent_to_drivers_mbx = new();
-        my_agente.agente_drv_mbx = agent_to_drivers_mbx;
+         my_agente.test_agente_mbx = test_agente_mbx;
 
         for (int i=0; i < 16; ++i) begin
 
