@@ -135,8 +135,6 @@ class ambiente #(
 
 
         // Conexion de agente
-
-        my_agente.agente_drv_mbx = agent_to_drivers_mbx;
         my_agente.agente_sb_mbx = agente_sb_mbx;
 
         
@@ -166,6 +164,8 @@ class ambiente #(
     endfunction
 
     function  run();
+
+        my_agente.agente_drv_mbx = agent_to_drivers_mbx;
 
         for (int i=0; i < 16; ++i) begin
 
