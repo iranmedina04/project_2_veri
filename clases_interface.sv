@@ -73,7 +73,7 @@ class trans_mesh #(
     int colum_target;
     
     constraint c1 {row < 6 ; row >= 0;}
-    constraint c2 { row == 0 -> colum < 6 ; row == 0 -> colum >= 0; row == 5 -> colum < 6 ; row == 5 -> colum >= 0;  row != 0 -> colum == 0 ; row != 0 -> colum == 5;}
+    constraint c2 { row == 0 -> colum < 5 ; row == 0 -> colum > 0; row == 5 -> colum < 5 ; row == 5 -> colum > 0;  row != 0 -> colum == 0 ; row != 0 -> colum == 5;}
     constraint c3 {mode >= 0; mode < 2;}
   	constraint c4 {terminal_envio >= 0 ; terminal_envio < 16;}
     constraint c5 {tiempo_retardo < 10; tiempo_retardo>=0;}
