@@ -116,6 +116,7 @@ class chcker #(
                 match = 0;
                 transaccion_mon_chckr_final = new();
                 mon_chckr_mbx.get(transaccion_mon_chckr_final);
+                transaccion_mon_chckr_final.print();
                 mon_sb_slocitud_final_mbx.put(transaccion_mon_chckr_final);
 
                 while(mon_sb_slocitud_final_respuesta_final_mbx.num() > 0); begin
