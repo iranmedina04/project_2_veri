@@ -122,7 +122,7 @@ class chcker #(
                     $display("Espera la respuest del scoreboard");
                     transaccion_mon_sb_slocitud_final_respuesta_final = new();
                     mon_sb_slocitud_final_respuesta_final_mbx.get(transaccion_mon_sb_slocitud_final_respuesta_final);
-                    transaccion_mon_sb_slocitud_final_respuesta_final.put();
+                    transaccion_mon_sb_slocitud_final_respuesta_final.print();
                     if (transaccion_mon_sb_slocitud_final_respuesta_final.pckg[PAKG_SIZE - 18 : 0] == transaccion_mon_chckr_final.pckg[PAKG_SIZE - 18 : 0]) begin
                         if (transaccion_mon_sb_slocitud_final_respuesta_final.tiempo_envio <= transaccion_mon_chckr_final.tiempo_recibido) begin
                             
