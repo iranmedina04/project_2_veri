@@ -210,7 +210,7 @@ class ambiente #(
 
             end    
             $display("Se cumplio el tiempo maximo de la prueba");
-            instrucciones_test_sb = reporte;
+            instr_test_sb = reporte;
             test_sb_mailbox.put(instr_test_sb);
             @(posedge vif.clk_i);
             $finish;
