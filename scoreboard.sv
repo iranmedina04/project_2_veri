@@ -202,7 +202,7 @@ class score_board #(    parameter ROWS = 4,
             for (int i=0; i < enviado_agente.size(); ++i) begin
                         
                 if(enviado_agente[i].pckg[PAKG_SIZE-18:0] == dato_monitor2.pckg[PAKG_SIZE-18:0])begin
-                    if(enviado_agente[i].tiempo_envio < dato_monitor2.tiempo_recibido)begin
+
                                     
                         dato_viejo2 = new();
                         dato_viejo2 = enviado_agente[i];
@@ -212,7 +212,6 @@ class score_board #(    parameter ROWS = 4,
                     
                         this.paquetes_encontrados2 = this.paquetes_encontrados2 + 1;
 
-                    end
                 end
 
             end
