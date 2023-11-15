@@ -160,7 +160,7 @@ class score_board #(    parameter ROWS = 4,
         while (chkr_sb_solicitud.num() > 0) begin
 
             $display("Mae si me estan llegando transacciones del checker solicitadas, terminal recibido: %h", dato_monitor.terminal_recibido);
-            this.paquetes_encontrados = 0;
+            paquetes_encontrados = 0;
             dato_monitor = new();
             chkr_sb_solicitud.get(dato_monitor);
                                             
