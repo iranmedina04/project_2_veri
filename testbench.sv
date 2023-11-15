@@ -84,22 +84,6 @@ module testbench();
         instrucciones_agente = un_paquete;
         test_agente_mbx.put(instrucciones_agente);
 
-        repeat (10000) begin
-        
-            @(posedge _if.clk_i);
-        
-        end
-
-        instrucciones_test_sb = reporte;
-
-        test_sb_mbx.put(instrucciones_test_sb);
-
-        repeat (10) begin
-        
-            @(posedge _if.clk_i);
-        
-        end
-
     end
 
     
