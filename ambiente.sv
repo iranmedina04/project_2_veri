@@ -166,7 +166,7 @@ class ambiente #(
 
     function  run();
 
-        test_sb_mailbox = new();
+        //test_sb_mailbox = new();
         my_agente.test_agente_mbx = test_agente_mbx;
         my_sb.test_sb_mailbox = test_sb_mailbox;
 
