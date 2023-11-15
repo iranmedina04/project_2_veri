@@ -100,6 +100,7 @@ class chcker #(
                         begin
                             
                             $display("Error con el paquete: %h, este no debe pasar por la terminal: %h", transaccion_mon_chckr_intermedio.pckg, transaccion_mon_chckr_intermedio.terminal_recibido);
+                            transaccion_mon_sb_slocitud_interna_respuesta.print();
                             $finish; 
 
                         end

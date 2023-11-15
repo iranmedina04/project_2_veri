@@ -160,8 +160,7 @@ class score_board #(    parameter ROWS = 4,
             dato_monitor = new();
             chkr_sb_solicitud.get(dato_monitor);
             $display("Mae si me estan llegando transacciones del checker solicitadas, terminal recibido: %h", dato_monitor.terminal_recibido);
-                                
-                    
+                                            
             for (int i=0; i < enviado_agente.size(); ++i) begin
                         
                 if(enviado_agente[i].pckg[PAKG_SIZE-18:0] == dato_monitor.pckg[PAKG_SIZE-18:0])begin
