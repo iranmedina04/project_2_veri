@@ -59,7 +59,7 @@ class chcker #(
         
         forever begin
             
-            @(posedge vif.clk_i)
+            #1;
 
             while (transaccion_monitor_interno_mbx.num() > 0) begin
                 
