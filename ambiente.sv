@@ -1,4 +1,5 @@
 
+
 class ambiente #(
 
     parameter ROWS = 4,
@@ -135,12 +136,13 @@ class ambiente #(
 
 
         // Conexion de agente
+
+        my_agente.agente_drv_mbx = agent_to_drivers_mbx;
         my_agente.agente_sb_mbx = agente_sb_mbx;
 
         
 
         // Conexion monitor interno
-        //my_sb.test_sb_mailbox = test_sb_mailbox;
 
         my_monitor_intern.transaccion_monitor_interno_mbx = transaccion_monitor_interno_mbx;
         
@@ -164,7 +166,9 @@ class ambiente #(
 
     function  run();
 
-         my_agente.test_agente_mbx = test_agente_mbx;
+        test_sb_mailbox = new();
+        my_agente.test_agente_mbx = test_agente_mbx;
+        my_sb.test_sb_mailbox = test_sb_mailbox;
 
         for (int i=0; i < 16; ++i) begin
 
@@ -196,7 +200,8 @@ class ambiente #(
             my_agente.run();
             
         join_none
-
+            
+        
     endfunction
 
 
