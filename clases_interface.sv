@@ -341,7 +341,9 @@ class trans_mesh #(
         if (mode) begin
             
             if (posicion_actual[3:0] != colum_target) begin
+
             while (posicion_actual[3:0] != colum_target) begin
+                
                 while (posicion_actual[7:4] != row_target) begin
 
                     if (posicion_actual[7:4] < row) begin
@@ -360,7 +362,7 @@ class trans_mesh #(
 
                 end    
 
-                if (posicion_actual[3:0] < row) begin
+                if (posicion_actual[3:0] < colum) begin
 
                     row2 = posicion_actual[3:0] + 1'b1;
                     posicion_actual[3:0] = row2;
