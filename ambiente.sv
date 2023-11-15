@@ -116,6 +116,8 @@ class ambiente #(
 
         end
 
+        test_sb_mailbox2 = new();
+
 
         // Conexiones del checker
 

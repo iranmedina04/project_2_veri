@@ -68,7 +68,7 @@ module testbench();
         test_agente_mbx = new();
         my_ambiente.test_agente_mbx = test_agente_mbx;
         my_ambiente.virtualc();
-        
+        test_sb_mailbox2 = new();
         fork
             
             my_ambiente.run();
@@ -91,7 +91,6 @@ module testbench();
         end
 
         my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
-        test_sb_mailbox2 = new();
         instr_al_sb = reporte;
         test_sb_mailbox2.put(instr_al_sb);
 
