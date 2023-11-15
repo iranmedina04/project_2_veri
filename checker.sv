@@ -116,14 +116,13 @@ class chcker #(
                 match = 0;
                 transaccion_mon_chckr_final = new();
                 mon_chckr_mbx.get(transaccion_mon_chckr_final);
-                transaccion_mon_chckr_final.print();
                 mon_sb_slocitud_final_mbx.put(transaccion_mon_chckr_final);
 
                 while(mon_sb_slocitud_final_respuesta_final_mbx.num() > 0); begin
                     $display("Espera la respuest del scoreboard");
                     transaccion_mon_sb_slocitud_final_respuesta_final = new();
                     mon_sb_slocitud_final_respuesta_final_mbx.get(transaccion_mon_sb_slocitud_final_respuesta_final);
-
+                    transaccion_mon_sb_slocitud_final_respuesta_final.put();
                     if (transaccion_mon_sb_slocitud_final_respuesta_final.pckg[PAKG_SIZE - 18 : 0] == transaccion_mon_chckr_final.pckg[PAKG_SIZE - 18 : 0]) begin
                         if (transaccion_mon_sb_slocitud_final_respuesta_final.tiempo_envio <= transaccion_mon_chckr_final.tiempo_recibido) begin
                             
