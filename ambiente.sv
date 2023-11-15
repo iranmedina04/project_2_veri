@@ -197,12 +197,7 @@ class ambiente #(
             my_agente.run();
             
         join_none
-            
-        forever begin
-            
-            $display("Solicitud del test al scoreboard, %g", test_sb_mailbox.num());
 
-        end
     endfunction
 
 
