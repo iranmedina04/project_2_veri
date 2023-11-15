@@ -126,7 +126,7 @@ class score_board #(    parameter ROWS = 4,
 
                 archivo_2 = $fopen("Reporte_Anchos_de_banda_Tiempo_promedio.csv", "a" );
 
-                $sformat (linea, "\n%g,%g,%g,%g,%g", ROWS, COLUMNS, FIFO_DEPTH, PAKG_SIZE, tpromedio, bw);
+                $sformat (linea, "\n%g,%g,%g,%g,%g,%g", ROWS, COLUMNS, FIFO_DEPTH, PAKG_SIZE, tpromedio, bw);
                             
                 $fwrite(archivo_2, "%s", linea);
 
