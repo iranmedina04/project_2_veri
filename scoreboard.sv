@@ -35,11 +35,8 @@ class score_board #(    parameter ROWS = 4,
 
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_agente; // Las realizadas por el agente;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor; // Las realizadas por el monitor;
-    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor2; // Las realizadas por el monitor;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor_interno; // Las realizadas por el agente;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_comparar; // Las realizadas por el monitor;
-    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_viejo; // Las realizadas por el monitor;
-    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_viejo2; // Las realizadas por el monitor;
 
     trans_sb #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) dato_verificado;
     trans_sb #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) transaccion_auxiliar;  // Las revisadas y realizadas correctamente
@@ -59,200 +56,175 @@ class score_board #(    parameter ROWS = 4,
     string informacion [$];
     int j;
 
-        task run ();
+    task run ();
 
         $display("Scoreboard run\n");
-        
+        bw = 0;
+        tpromedio = 0;
 
         forever begin
             
-            // Inicializa los datos 
-           #10;
+        #1;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Logica para el reporte
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        while (test_sb_mailbox.num() > 0) begin
             
-            bw = 0; 
-            if(test_sb_mailbox.num() > 0)begin
+            $display("Se recibio una transaccion de reporte desde el test");
 
-                $display("Mae si era una transacciones de reporte");
-                test_sb_mailbox.get(transaccion_test);
-                transaccion_test = reporte;
-                case (transaccion_test)
-                    
-                    reporte: begin
-                        
-                        $display("Mae si era una transacciones de reporte");
-                        tiempo = 0;
-                        linea = "";
-                        linea_agregar = "";
-                        informacion = {};
-                        
+            test_sb_mailbox.get(transaccion_test);
 
-                        for (int i=0; i < verificadas.size(); ++i) begin
-                            
-                            
-                            transaccion_auxiliar = new();
-                            transaccion_auxiliar = verificadas[i];
-                            tiempo = tiempo + transaccion_auxiliar.latencia;
-                            
-                            $sformat(linea_agregar, "%h,%g,%g,%g,%g,%g,%g\n", 
-                            
-                            transaccion_auxiliar.pckg,
-                            transaccion_auxiliar.tiempo_envio,
-                            transaccion_auxiliar.tiempo_recibido,
-                            transaccion_auxiliar.terminal_envio,
-                            transaccion_auxiliar.terminal_recibido,
-                            transaccion_auxiliar.latencia,
-                            FIFO_DEPTH          
-                            );
-
-                            informacion.push_back(linea_agregar);
-
-                            
-
-                        end
-
-                        archivo_1 = $fopen("Reporte_transacciones.csv", "a" );
-                        
-                        for (int i=0; i<informacion.size(); ++i) begin
-
-                            $fwrite(archivo_1, "%s", informacion[i]);
-                            
-                        end
-                        
-                        $fclose(archivo_1);
-
-                        tpromedio = tiempo / verificadas.size();
-
-                        bw =  PAKG_SIZE * 10e9 / (tpromedio);                       
-                        
-
-                        //$display("Para una prueba con Terminales: [%g], Profundidad: [%g], Ancho de palabra: [%g], Tiempo promedio: [%g], Ancho de banda: [%g] \n Se imprimió el reporte", drivers, profundidad, PAKG_SIZE, tpromedio, bw );
-
-                        archivo_2 = $fopen("Reporte_Anchos_de_banda_Tiempo_promedio.csv", "a" );
-
-                        $sformat (linea, "\n%g,%g,%g,%g,%g", ROWS, COLUMNS, FIFO_DEPTH, PAKG_SIZE, tpromedio, bw);
-                        
-                        $fwrite(archivo_2, "%s", linea);
-
-                        $fclose(archivo_2);
-
-                        $display("Se imprimió el reporte");
-                    
-                    end
-
-                    default: begin
-                       
-                        $display("No se recibio ninguna instrucción de reporte valida desde el test");
-
-                    end
-                endcase
-
-
-            end
-            else begin
-                while (agnt_sb_mbx.num() > 0) begin
-
-                    $display("Mae si me estan llegando transacciones del agente");
-                    dato_agente = new();
-                    agnt_sb_mbx.get(dato_agente);
-                    enviado_agente.push_back(dato_agente);
-
-                end
-
-                while (chkr_sb_solicitud.num() > 0) begin
-
-                    this.paquetes_encontrados = 0;
-                    dato_monitor = new();
-                    chkr_sb_solicitud.get(dato_monitor);
-                    $display("Mae si me estan llegando transacciones del checker solicitades");
-                                
-                    
-                    for (int i=0; i < enviado_agente.size(); ++i) begin
-                        
-                        if(enviado_agente[i].pckg[PAKG_SIZE-9:0] == dato_monitor.pckg[PAKG_SIZE-9:0])begin
-
-                                if(enviado_agente[i].tiempo_envio < dato_monitor.tiempo_recibido)begin
-                                    
-                                    dato_viejo = new();
-                                    dato_viejo = enviado_agente[i];
-                                    
-
-                                    sc_ckr_encontrado.put(dato_viejo);
-                    
-                                    this.paquetes_encontrados = this.paquetes_encontrados + 1;
-
-                                end
-                        end
-
-                    end
-                            
-                    
-                    if (paquetes_encontrados == 0) begin
-                        
-                        $display("Error: No se encontró ninguna transaccion anterior con ese valor");
-                        dato_monitor.print();
-                        $finish;
-
-                    end
-                    
-                end
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Buscador de la ruta
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              
-                while (chkr_sb_solicitud_interna.num() > 0) begin
-
-                    $display("Mae si me estan llegando transacciones del checker solicitades 2");
-                    this.paquetes_encontrados2 = 0;
-                    dato_monitor2 = new();
-                    chkr_sb_solicitud.get(dato_monitor2);
-
-                                
-                    
-                    for (int i=0; i < enviado_agente.size(); ++i) begin
-                        
-                        if(enviado_agente[i].pckg[PAKG_SIZE-9:0] == dato_monitor2.pckg[PAKG_SIZE-9:0])begin
-                                if(enviado_agente[i].tiempo_envio < dato_monitor2.tiempo_recibido)begin
-                                    
-                                    dato_viejo2 = new();
-                                    dato_viejo2 = enviado_agente[i];
-                                    
-
-                                    sc_ckr_encontrado.put(dato_viejo2);
-                    
-                                    this.paquetes_encontrados2 = this.paquetes_encontrados2 + 1;
-
-                                end
-                        end
-
-                    end
-                            
-                    
-                    if (paquetes_encontrados2 == 0) begin
-                        
-                        $display("Error: No se encontró ninguna transaccion anterior con ese valor");
-                        dato_monitor2.print();
-                        $finish;
-
-                    end
-                    
-                end
-
-
-                while (chkr_sb_verificado.num() > 0) begin
-
-                    dato_verificado = new();
-                    chkr_sb_verificado.get(dato_verificado);
-                    $display("Se guardó el paquete en el scoreboard: %h", dato_verificado);
-                    verificadas.push_back(dato_verificado);
-
-                end
+            if (transaccion_test == reporte) begin
                 
+                $display("Se imprimirá el reporte");
+                tiempo = 0;
+                linea = "";
+                linea_agregar = "";
+                informacion = {};
+                for (int i=0; i < verificadas.size(); ++i) begin
+                            
+                            
+                    transaccion_auxiliar = new();
+                    transaccion_auxiliar = verificadas[i];
+                    tiempo = tiempo + transaccion_auxiliar.latencia;
+                            
+                    $sformat(linea_agregar, "%h,%g,%g,%g,%g,%g,%g\n", 
+                           
+                        transaccion_auxiliar.pckg,
+                        transaccion_auxiliar.tiempo_envio,
+                        transaccion_auxiliar.tiempo_recibido,
+                        transaccion_auxiliar.terminal_envio,
+                        transaccion_auxiliar.terminal_recibido,
+                        transaccion_auxiliar.latencia,
+                        FIFO_DEPTH   
+                                    
+                    );
+
+                    informacion.push_back(linea_agregar);
+            
+                end
+
+                archivo_1 = $fopen("Reporte_transacciones.csv", "a" );
+                        
+                for (int i=0; i<informacion.size(); ++i) begin
+
+                    $fwrite(archivo_1, "%s", informacion[i]);
+                            
+                end
+                        
+                $fclose(archivo_1);
+
+                tpromedio = tiempo / verificadas.size();
+
+                bw =  PAKG_SIZE * 10e9 / (tpromedio);  
+
+                archivo_2 = $fopen("Reporte_Anchos_de_banda_Tiempo_promedio.csv", "a" );
+
+                $sformat (linea, "\n%g,%g,%g,%g,%g", ROWS, COLUMNS, FIFO_DEPTH, PAKG_SIZE, tpromedio, bw);
+                            
+                $fwrite(archivo_2, "%s", linea);
+
+                $fclose(archivo_2);
+
+                $display("Se imprimió el reporte");
+
+            end else begin
+
+               $display("Solicutud del test al scoreboard desconocido");
+
             end
-        end    
- 
+
+        end
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Para la solicitudes
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        while (chkr_sb_solicitud.num() > 0) begin
+
+            this.paquetes_encontrados = 0;
+            dato_monitor = new();
+            chkr_sb_solicitud.get(dato_monitor);
+            $display("Mae si me estan llegando transacciones del checker solicitadas");
+                                
+                    
+            for (int i=0; i < enviado_agente.size(); ++i) begin
+                        
+                if(enviado_agente[i].pckg[PAKG_SIZE-18:0] == dato_monitor.pckg[PAKG_SIZE-18:0])begin
+
+                    if(enviado_agente[i].tiempo_envio < dato_monitor.tiempo_recibido)begin
+                                    
+                        dato_viejo = new();
+                        dato_viejo = enviado_agente[i];
+                        $display("Se encontró una concidencia");
+                        sc_ckr_encontrado.put(dato_viejo);
+                    
+                        this.paquetes_encontrados = this.paquetes_encontrados + 1;
+
+                    end
+                end
+
+                end
+                            
+                if (paquetes_encontrados == 0) begin
+                        
+                    $display("Error: No se encontró ninguna transaccion anterior con ese valor");
+                    dato_monitor.print();
+                    $finish;
+
+                end      
+           
+        end
+
+        while (chkr_sb_solicitud_interna.num() > 0) begin
+
+            $display("Mae si me estan llegando transacciones del checker solicitades 2");
+            this.paquetes_encontrados2 = 0;
+            dato_monitor2 = new();
+            chkr_sb_solicitud_interna.get(dato_monitor2);
+
+                                
+                    
+            for (int i=0; i < enviado_agente.size(); ++i) begin
+                        
+                if(enviado_agente[i].pckg[PAKG_SIZE-18:0] == dato_monitor2.pckg[PAKG_SIZE-18:0])begin
+                    if(enviado_agente[i].tiempo_envio < dato_monitor2.tiempo_recibido)begin
+                                    
+                        dato_viejo2 = new();
+                        dato_viejo2 = enviado_agente[i];
+                                    
+
+                        sc_ckr_encontrado2.put(dato_viejo2);
+                    
+                        this.paquetes_encontrados2 = this.paquetes_encontrados2 + 1;
+
+                    end
+                end
+
+            end
+                            
+                    
+            if (paquetes_encontrados2 == 0) begin
+                        
+                $display("Error: No se encontró ninguna transaccion anterior con ese valor");
+                dato_monitor2.print();
+                $finish;
+
+            end
+                    
+        end
+
+        while (chkr_sb_verificado.num() > 0) begin
+
+            dato_verificado = new();
+            chkr_sb_verificado.get(dato_verificado);
+            $display("Se guardó el paquete en el scoreboard: %h", dato_verificado);
+            verificadas.push_back(dato_verificado);
+
+        end        
+
+        end
     endtask 
     
 endclass
