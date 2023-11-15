@@ -165,6 +165,7 @@ class ambiente #(
 
     function  run();
 
+        agent_to_drivers_mbx = new();
         my_agente.agente_drv_mbx = agent_to_drivers_mbx;
 
         for (int i=0; i < 16; ++i) begin
