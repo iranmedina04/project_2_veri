@@ -30,6 +30,7 @@ class score_board #(    parameter ROWS = 4,
     trans_mbx  #(.PAKG_SIZE(PAKG_SIZE)) chkr_sb_solicitud_interna;
     trans_mbx  #(.PAKG_SIZE(PAKG_SIZE)) sc_ckr_encontrado;
     trans_mbx  #(.PAKG_SIZE(PAKG_SIZE)) sc_ckr_encontrado2;
+
     trans_sb_mbx #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) chkr_sb_verificado;
     test_sb_mbx  test_sb_mailbox;
 
@@ -37,6 +38,8 @@ class score_board #(    parameter ROWS = 4,
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor; // Las realizadas por el monitor;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor_interno; // Las realizadas por el agente;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_comparar; // Las realizadas por el monitor;
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_viejo; // Las realizadas por el monitor;
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_viejo2; // Las realizadas por el monitor;
 
     trans_sb #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) dato_verificado;
     trans_sb #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) transaccion_auxiliar;  // Las revisadas y realizadas correctamente
