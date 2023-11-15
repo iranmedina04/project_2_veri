@@ -112,6 +112,7 @@ class chcker #(
 
             while (mon_chckr_mbx.num() > 0) begin
 
+                $display("Mae si recibe una transacción del monitor");
                 match = 0;
                 transaccion_mon_chckr_final = new();
                 mon_chckr_mbx.get(transaccion_mon_chckr_final);
