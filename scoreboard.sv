@@ -36,6 +36,7 @@ class score_board #(    parameter ROWS = 4,
 
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_agente; // Las realizadas por el agente;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor; // Las realizadas por el monitor;
+    trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor2; // Las realizadas por el monitor
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_monitor_interno; // Las realizadas por el agente;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_comparar; // Las realizadas por el monitor;
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) dato_viejo; // Las realizadas por el monitor;
