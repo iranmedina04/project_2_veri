@@ -150,6 +150,7 @@ class score_board #(    parameter ROWS = 4,
             //$display("Mae si me estan llegando transacciones datos del agente");
             dato_agente = new();
             agnt_sb_mbx.get(dato_agente);
+            dato_agente.fun_ruta();
             enviado_agente.push_back(dato_agente);
 
         end  
@@ -206,7 +207,7 @@ class score_board #(    parameter ROWS = 4,
                         dato_viejo2 = new();
                         dato_viejo2 = enviado_agente[i];
                                     
-                        dato_viejo2.fun_ruta();
+                        //dato_viejo2.fun_ruta();
                         sc_ckr_encontrado2.put(dato_viejo2);
                     
                         this.paquetes_encontrados2 = this.paquetes_encontrados2 + 1;
