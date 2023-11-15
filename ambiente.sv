@@ -70,6 +70,8 @@ class ambiente #(
 
     test_sb_mbx  test_sb_mailbox;
 
+    instrucciones_test_sb instrucciones_test_sb;
+
     // Funcion new donde se inicializan las cosas y se conectan los mailboxes
 
     function new();
@@ -166,7 +168,7 @@ class ambiente #(
 
     function  run();
 
-        //test_sb_mailbox = new();
+        test_sb_mailbox = new();
         my_agente.test_agente_mbx = test_agente_mbx;
         my_sb.test_sb_mailbox = test_sb_mailbox;
 
@@ -200,7 +202,20 @@ class ambiente #(
             my_agente.run();
             
         join_none
-            
+        forever begin
+
+            repeat(100000000000) begin
+
+                @(posedge vif.clk_i);
+
+            end    
+            $display("Se cumplio el tiempo maximo de la prueba");
+            instrucciones_test_sb = reporte;
+            test_sb_mailbox.put(instrucciones_test_sb);
+            @(posedge vif.clk_i);
+            $finish;
+
+        end
         
     endfunction
 

@@ -28,11 +28,10 @@ module testbench();
 
     instrucciones_agente instrucciones_agente;
 
-    instrucciones_test_sb instrucciones_test_sb;
 
     test_agente_mbx test_agente_mbx;
 
-    test_sb_mbx test_sb_mbx;
+
 
     mesh_if #(
 
@@ -67,9 +66,7 @@ module testbench();
         my_ambiente = new();
         my_ambiente.vif = _if;
         test_agente_mbx = new();
-        test_sb_mbx = new();
         my_ambiente.test_agente_mbx = test_agente_mbx;
-        my_ambiente.my_sb.test_sb_mailbox = test_sb_mbx;
         my_ambiente.virtualc();
         
         fork
@@ -102,8 +99,6 @@ module testbench();
             @(posedge _if.clk_i);
         
         end
-
-        $finish;
 
     end
 
