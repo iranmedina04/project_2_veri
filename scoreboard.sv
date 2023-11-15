@@ -236,10 +236,11 @@ class score_board #(    parameter ROWS = 4,
 
         while (chkr_sb_verificado.num() > 0) begin
 
+            $display("Se recibio transaccion verificada");
             dato_verificado = new();
             chkr_sb_verificado.get(dato_verificado);
-            $display("Se guardó el paquete en el scoreboard: %h", dato_verificado);
             verificadas.push_back(dato_verificado);
+            dato_verificado.print();
 
         end        
 
