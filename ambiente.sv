@@ -69,6 +69,7 @@ class ambiente #(
     // Scoreboard 
 
     test_sb_mbx  test_sb_mailbox;
+    test_sb_mbx  test_sb_mailbox2;
 
     instrucciones_test_sb instr_test_sb;
 
@@ -203,17 +204,19 @@ class ambiente #(
             
         join_none
         forever begin
+            
+            #1;
 
-            repeat(100000) begin
-          
-              @(posedge vif.clk_i);
+           
+            if(test_sb_mailbox2.num() > 0) begin
+                
+                $display("Se cumplio el tiempo maximo de la prueba");
+                test_sb_mailbox2.get(instr_test_sb);
+                test_sb_mailbox.put(instr_test_sb);
+                @(posedge vif.clk_i);
+                $finish;
 
-            end    
-            $display("Se cumplio el tiempo maximo de la prueba");
-            instr_test_sb = reporte;
-            test_sb_mailbox.put(instr_test_sb);
-            @(posedge vif.clk_i);
-            $finish;
+            end
 
         end
         

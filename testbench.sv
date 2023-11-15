@@ -30,8 +30,8 @@ module testbench();
 
 
     test_agente_mbx test_agente_mbx;
-
-
+    test_sb_mbx  test_sb_mailbox2;
+    instrucciones_test_sb instr_al_sb;
 
     mesh_if #(
 
@@ -68,6 +68,7 @@ module testbench();
         test_agente_mbx = new();
         my_ambiente.test_agente_mbx = test_agente_mbx;
         my_ambiente.virtualc();
+        test_sb_mailbox2 = new();
         
         fork
             
@@ -83,6 +84,17 @@ module testbench();
 
         instrucciones_agente = un_paquete;
         test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
 
     end
 
