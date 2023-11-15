@@ -143,7 +143,7 @@ class ambiente #(
 
         // Conexion monitor interno
         my_agente.test_agente_mbx = test_agente_mbx;
-        my_sb.test_sb_mailbox = test_sb_mailbox;
+        //my_sb.test_sb_mailbox = test_sb_mailbox;
 
         my_monitor_intern.transaccion_monitor_interno_mbx = transaccion_monitor_interno_mbx;
         
@@ -198,7 +198,11 @@ class ambiente #(
             
         join_none
             
-        
+        forever begin
+            
+            $display("Solicitud del test al scoreboard, %g", test_sb_mailbox.num());
+
+        end
     endfunction
 
 

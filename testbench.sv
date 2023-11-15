@@ -69,7 +69,7 @@ module testbench();
         test_agente_mbx = new();
         test_sb_mbx = new();
         my_ambiente.test_agente_mbx = test_agente_mbx;
-        my_ambiente.test_sb_mailbox = test_sb_mbx;
+        my_ambiente.my_sb.test_sb_mailbox = test_sb_mbx;
         my_ambiente.virtualc();
         
         fork
