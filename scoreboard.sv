@@ -144,6 +144,15 @@ class score_board #(    parameter ROWS = 4,
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Para la solicitudes
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                
+        while (agnt_sb_mbx.num() > 0) begin
+            
+            $display("Mae si me estan llegando transacciones datos del agente");
+            dato_agente = new();
+            agnt_sb_mbx.get(dato_agente);
+            enviado_agente.push_back(dato_agente);
+
+        end  
 
         while (chkr_sb_solicitud.num() > 0) begin
 
@@ -214,6 +223,7 @@ class score_board #(    parameter ROWS = 4,
                 $display("Error: No se encontró ninguna transaccion anterior con ese valor\n");
                 dato_monitor2.print();
                 $display("Transacciones enviadas por el agente\n");
+
                 for (int i=0; i < enviado_agente.size(); ++i) begin
 
                     enviado_agente[i].print();
