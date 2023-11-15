@@ -205,8 +205,8 @@ class ambiente #(
         forever begin
 
             repeat(100000) begin
-
-                @(posedge vif.clk_i);
+          
+              @(posedge vif.clk_i);
 
             end    
             $display("Se cumplio el tiempo maximo de la prueba");
