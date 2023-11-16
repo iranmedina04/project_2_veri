@@ -81,7 +81,7 @@ module testbench();
         
         end
 
-        instrucciones_agente = varios_dispositivos_envio_recibido;
+        instrucciones_agente = un_paquete;
         test_agente_mbx.put(instrucciones_agente);
 
         repeat (10000) begin
