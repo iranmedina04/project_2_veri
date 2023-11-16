@@ -53,7 +53,7 @@ class agente #(     parameter ROWS = 4,
                    
                     un_paquete: begin //Caso en el que se envía un solo paquete aleatorio desde cualquier dispositivo hacia cualquier otro dispositivo
                             
-                            $display("Un paquete");
+                            //$display("Un paquete");
                             espera = 0;
                             transaccion = new();
                             transaccion.randomize(); //Vuelve aleatorios los valores de la transacción
@@ -134,7 +134,7 @@ class agente #(     parameter ROWS = 4,
                     end
 
                     reset_inicio: begin //Caso de esquina en el que se realiza un reset antes de que se envíe alguna transacción
-                      $display("Si estoy en reset inicio");
+                      //$display("Si estoy en reset inicio");
                       vif.rst_i = '1;
                       @(posedge vif.clk_i);
                       vif.rst_i = '0;

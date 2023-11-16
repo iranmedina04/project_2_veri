@@ -82,7 +82,7 @@ class driver #(
                 agnt_drv_mbx.get(transaccion_agente);
                 fifo_entrada.push(transaccion_agente.pckg);
                 //$display("Se puso en la cola de envio el paquete %h en el tiempo %g en la terminal: %g \n", transaccion_agente.pckg , $time, id_terminal);
-                $display("Llego al driver");
+                //$display("Llego al driver");
                 //transaccion_agente.print();
                 vif.pdng_i_in[id_terminal] = '1;
                 vif.dato_out_i_in [id_terminal] = fifo_entrada.fifo_sim[0];
