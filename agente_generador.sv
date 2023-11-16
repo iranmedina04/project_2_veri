@@ -53,6 +53,7 @@ class agente #(     parameter ROWS = 4,
                    
                     un_paquete: begin //Caso en el que se envía un solo paquete aleatorio desde cualquier dispositivo hacia cualquier otro dispositivo
                             
+                            $display("Un paquete");
                             espera = 0;
                             transaccion = new();
                             transaccion.randomize(); //Vuelve aleatorios los valores de la transacción
@@ -225,12 +226,6 @@ class agente #(     parameter ROWS = 4,
                       @(posedge vif.clk_i);
                       vif.rst_i = '0;
                     end
-
-                  default: begin
-
-                    $display("No llegó");
-
-                  end
 
                 endcase
         end
