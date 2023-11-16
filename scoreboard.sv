@@ -178,15 +178,7 @@ class score_board #(    parameter ROWS = 4,
                     end
                 end
 
-                end
-                            
-                if (paquetes_encontrados == 0) begin
-                        
-                    $display("Error: No se encontró ninguna transaccion anterior con ese valor");
-                    dato_monitor.print();
-                    $finish;
-
-                end      
+                end     
            
         end
 
