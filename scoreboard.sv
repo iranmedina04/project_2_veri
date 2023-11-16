@@ -219,15 +219,15 @@ class score_board #(    parameter ROWS = 4,
                     
             if (paquetes_encontrados2 == 0) begin
                         
-                //$display("Error: No se encontró ninguna transaccion anterior con ese valor\n");
-                //dato_monitor2.print();
-                //$display("Transacciones enviadas por el agente\n");
+                $display("Error: No se encontró ninguna transaccion anterior con ese valor\n");
+                dato_monitor2.print();
+                $display("Transacciones enviadas por el agente\n");
 
-                //for (int i=0; i < enviado_agente.size(); ++i) begin
+                for (int i=0; i < enviado_agente.size(); ++i) begin
 
-                   // enviado_agente[i].print();
+                   enviado_agente[i].print();
 
-                //end
+                end
                 $finish;
 
             end

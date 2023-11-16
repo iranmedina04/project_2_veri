@@ -81,7 +81,7 @@ module testbench();
         
         end
 
-        instrucciones_agente = llenado_fifos;
+        instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
         repeat (10000) begin
