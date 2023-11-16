@@ -46,7 +46,7 @@ module testbench();
     initial begin
 
         my_test = new();
-        my_test.vif = _if;
+        my_test.my_ambiente.vif = _if;
         fork
 
             my_test.run();
