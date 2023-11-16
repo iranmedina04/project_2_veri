@@ -137,7 +137,7 @@ module testbench();
         
         end
         $display("Corriendo prueba de un varios Llenado fifos");
-        instrucciones_agente = varios_dispositivos_envio_recibido;
+        instrucciones_agente = llenado_fifos;
         test_agente_mbx.put(instrucciones_agente);
 
         repeat (10000) begin
