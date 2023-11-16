@@ -216,7 +216,6 @@ class ambiente #(
                 test_sb_mailbox2.get(instr_test_sb);
                 test_sb_mailbox.put(instr_test_sb);
                 @(posedge vif.clk_i);
-                $finish;
 
             end
 
