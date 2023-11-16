@@ -16,7 +16,7 @@ class agente #(     parameter ROWS = 4,
                     parameter FIFO_DEPTH = 16);
 
     // Definición de la variable virtual
-    virtual mesh_if #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) vif;
+
 
     // Mailboxes  
     trans_mbx  #(.PAKG_SIZE(PAKG_SIZE)) agente_drv_mbx[15:0];
