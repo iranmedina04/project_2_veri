@@ -23,6 +23,7 @@ class test #(       parameter ROWS = 4,
         my_ambiente.test_agente_mbx = test_agente_mbx;
         my_ambiente.virtualc();
         test_sb_mailbox2 = new();
+        $display("Corriendo prueba de un paquete");
         fork
             
             my_ambiente.run();
@@ -34,7 +35,7 @@ class test #(       parameter ROWS = 4,
             @(posedge vif.clk_i);
         
         end
-        $display("Corriendo prueba de un paquete");
+
         instrucciones_agente = un_paquete;
         test_agente_mbx.put(instrucciones_agente);
 
@@ -49,20 +50,21 @@ class test #(       parameter ROWS = 4,
         test_sb_mailbox2.put(instr_al_sb);
 
         disable fork;
-
-                fork
-            
-            my_ambiente.run();
-
-        join_none
-
-        repeat (10) begin
-        
-            @(posedge vif.clk_i);
-        
-        end
-        
         $display("Corriendo prueba de un varios paquetes");
+        
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge vif.clk_i);
+        
+        end
+        
+
         instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
@@ -79,18 +81,20 @@ class test #(       parameter ROWS = 4,
         disable fork;
         #10;
 
-        fork
-            
-            my_ambiente.run();
-
-        join_none
-
-        repeat (10) begin
-        
-            @(posedge vif.clk_i);
-        
-        end
         $display("Corriendo prueba de un varios Llenado fifos");
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge vif.clk_i);
+        
+        end
+
         instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
@@ -106,19 +110,19 @@ class test #(       parameter ROWS = 4,
 
         disable fork;
         #10;
-
-        fork
-            
-            my_ambiente.run();
-
-        join_none
-
-        repeat (10) begin
-        
-            @(posedge vif.clk_i);
-        
-        end
         $display("Corriendo prueba de un varios Reset inicio");
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge vif.clk_i);
+        
+        end
+
         instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
@@ -135,18 +139,20 @@ class test #(       parameter ROWS = 4,
         disable fork;
         #10;
 
-        fork
-            
-            my_ambiente.run();
-
-        join_none
-
-        repeat (10) begin
-        
-            @(posedge vif.clk_i);
-        
-        end
         $display("Corriendo prueba de Reset en medio");
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge vif.clk_i);
+        
+        end
+
         instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
@@ -162,7 +168,7 @@ class test #(       parameter ROWS = 4,
 
         disable fork;
         #10;
-
+        $display("Corriendo prueba de Reset final");
         fork
             
             my_ambiente.run();
@@ -174,7 +180,9 @@ class test #(       parameter ROWS = 4,
             @(posedge vif.clk_i);
         
         end
-        $display("Corriendo prueba de Reset final");
+
+
+
         instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
