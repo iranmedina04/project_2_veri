@@ -94,6 +94,181 @@ module testbench();
         instr_al_sb = reporte;
         test_sb_mailbox2.put(instr_al_sb);
 
+        disable fork;
+
+        // Seegunda prueba
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_agente = varios_dispositivos_envio_recibido;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+
+    // Tercer prueba
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_agente = llenado_fifos;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+
+    // Cuarta prueba
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_agente = envio_fuera_de_rango;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+
+    // Quinta prueba
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_agente = reset_inicio;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+
+    // Sexta prueba
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_agente = reset_mitad;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+
+    // Septima prueba
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        instrucciones_agente = reset_final;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
 
     end
 
