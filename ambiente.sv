@@ -157,7 +157,7 @@ class ambiente #(
     function  virtualc ();
 
         my_monitor_intern.vif = vif;
-        //my_agente.vif = vif;
+        my_agente.vif = vif;
         my_chcker.vif = vif;
 
         for (int i=0; i<16; ++i) begin

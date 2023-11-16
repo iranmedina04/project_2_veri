@@ -22,7 +22,8 @@ class agente #(     parameter ROWS = 4,
     trans_mbx  #(.PAKG_SIZE(PAKG_SIZE)) agente_drv_mbx[15:0];
     trans_mbx  #(.PAKG_SIZE(PAKG_SIZE)) agente_sb_mbx;
     test_agente_mbx test_agente_mbx;
-  
+    virtual mesh_if #(.ROWS(ROWS), .COLUMNS(COLUMNS), .PAKG_SIZE(PAKG_SIZE), .FIFO_DEPTH(FIFO_DEPTH)) vif;
+
 
     //Transacción 
     trans_mesh #(.PAKG_SIZE(PAKG_SIZE)) transaccion;
