@@ -131,6 +131,7 @@ class agente #(     parameter ROWS = 4,
                     end
 
                     reset_inicio: begin //Caso de esquina en el que se realiza un reset antes de que se envíe alguna transacción
+                      $display("Si estoy en reset inicio");
                       vif.rst_i = '1;
                       @(posedge vif.clk_i);
                       vif.rst_i = '0;
