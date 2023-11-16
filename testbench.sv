@@ -98,6 +98,8 @@ module testbench();
 
         // Seegunda prueba
 
+        $display("Se está corriendo la segunda prueba");
+
         fork
             
             my_ambiente.run();
@@ -126,6 +128,7 @@ module testbench();
         disable fork;
 
     // Tercer prueba
+        $display("Se está corriendo la tercera prueba");
 
         fork
             
@@ -156,6 +159,8 @@ module testbench();
 
     // Cuarta prueba
 
+        $display("Se está corriendo la cuarta prueba");
+
         fork
             
             my_ambiente.run();
@@ -184,6 +189,8 @@ module testbench();
         disable fork;
 
     // Quinta prueba
+
+        $display("Quinta");
 
         fork
             
@@ -214,6 +221,9 @@ module testbench();
 
     // Sexta prueba
 
+    
+        $display("Sexta");
+
         fork
             
             my_ambiente.run();
@@ -242,6 +252,7 @@ module testbench();
         disable fork;
 
     // Septima prueba
+        $display("Septima");
 
         fork
             
