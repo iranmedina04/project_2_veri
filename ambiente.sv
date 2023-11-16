@@ -205,21 +205,7 @@ class ambiente #(
             my_agente.run();
             
         join_none
-        forever begin
-            
-            #1;
 
-           
-        if(test_sb_mailbox2.num() > 0) begin
-                
-                $display("Se cumplio el tiempo maximo de la prueba");
-                test_sb_mailbox2.get(instr_test_sb);
-                test_sb_mailbox.put(instr_test_sb);
-                @(posedge vif.clk_i);
-
-            end
-
-        end
         
     endtask
 

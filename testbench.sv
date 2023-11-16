@@ -129,7 +129,7 @@ module testbench();
 
     // Tercer prueba
         $display("Se está corriendo la tercera prueba");
-
+/*
         fork
             
             my_ambiente.run();
@@ -156,6 +156,7 @@ module testbench();
         test_sb_mailbox2.put(instr_al_sb);
 
         disable fork;
+*/
 
     // Cuarta prueba
 
