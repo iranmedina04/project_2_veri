@@ -505,7 +505,7 @@ class trans_sb #( //Definición de la clase de transacciones del scoreboard
 
     function print(); //Función para imprimir la transacción
         
-        $display("El paquete del Sb posee: \n Paquete: [%h], Tiempo envio: [%t] \n Tiempo recibido: [%t] \n Terminal envio: [%g] \n Terminal recibido: [%g] \n Latencia: [%g] \n",
+        $display("El paquete del Sb posee: \n Paquete: [%h], \n Tiempo envio: [%t] \n Tiempo recibido: [%t] \n Terminal envio: [%g] \n Terminal recibido: [%g] \n Latencia: [%g] \n",
         
         this.pckg,
         this.tiempo_envio,

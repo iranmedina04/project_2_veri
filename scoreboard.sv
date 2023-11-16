@@ -240,7 +240,7 @@ class score_board #(    parameter ROWS = 4,
             dato_verificado = new();
             chkr_sb_verificado.get(dato_verificado);
             verificadas.push_back(dato_verificado);
-            dato_verificado.print();
+            //dato_verificado.print();
 
         end        
 
