@@ -222,6 +222,10 @@ class agente #(     parameter ROWS = 4,
                       @(posedge vif.clk_i);
                       vif.rst_i = '0;
                     end
+
+                    default:
+
+                    $display("No llegó");
     
 
                 endcase
