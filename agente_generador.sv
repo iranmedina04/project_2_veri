@@ -52,6 +52,7 @@ class agente #(     parameter ROWS = 4,
                 $display("[%g] Segundo El agente fue inicializado",$time);
                 case (instruccion)
                     un_paquete: begin //Caso en el que se envía un solo paquete aleatorio desde cualquier dispositivo hacia cualquier otro dispositivo
+                            
                             espera = 0;
                             transaccion = new();
                             transaccion.randomize(); //Vuelve aleatorios los valores de la transacción
