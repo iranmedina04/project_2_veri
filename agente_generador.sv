@@ -49,8 +49,8 @@ class agente #(     parameter ROWS = 4,
             if (test_agente_mbx.num() > 0)begin //Verifica si hay algo en el mailbox del test al agente
                 $display("[%g] El agente fue inicializado",$time);
                 test_agente_mbx.get(instruccion); //Se obtiene la instrucción del mailbox del test al agente
-                $display("[%g] Segundo El agente fue inicializado",$time);
                 case (instruccion)
+                   
                     un_paquete: begin //Caso en el que se envía un solo paquete aleatorio desde cualquier dispositivo hacia cualquier otro dispositivo
                             
                             espera = 0;
@@ -71,6 +71,7 @@ class agente #(     parameter ROWS = 4,
                     end
                  
                     varios_dispositivos_envio_recibido: begin //Caso en el que se envían varios paquetes aleatorios desde cualquier dispositivo hacia cualquier otro dispositivo
+                      
                       num_transacciones = $urandom_range(1, 32); //Define un número aleatorio de transacciones 
                         for(int i = 0; i< num_transacciones; i++)begin
                             espera = 0;
