@@ -45,7 +45,7 @@ module testbench();
 
     initial begin
 
-        my_test = new():
+        my_test = new();
         my_test.vif = _if;
         fork
 
