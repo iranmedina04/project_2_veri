@@ -48,7 +48,7 @@ class agente #(     parameter ROWS = 4,
         forever begin
             #1
             if (test_agente_mbx.num() > 0)begin //Verifica si hay algo en el mailbox del test al agente
-                $display("[%g] El agente fue inicializado",$time);
+                //$display("[%g] El agente fue inicializado",$time);
                 test_agente_mbx.get(instruccion); //Se obtiene la instrucción del mailbox del test al agente
                 case (instruccion)
                    
