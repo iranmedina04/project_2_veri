@@ -80,7 +80,7 @@ module testbench();
             @(posedge _if.clk_i);
         
         end
-
+        $display("Corriendo prueba de un paquete");
         instrucciones_agente = un_paquete;
         test_agente_mbx.put(instrucciones_agente);
 
@@ -107,7 +107,8 @@ module testbench();
             @(posedge _if.clk_i);
         
         end
-
+        
+        $display("Corriendo prueba de un varios paquetes");
         instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
@@ -124,7 +125,7 @@ module testbench();
         disable fork;
         #10;
 
-                        fork
+        fork
             
             my_ambiente.run();
 
@@ -135,8 +136,92 @@ module testbench();
             @(posedge _if.clk_i);
         
         end
+        $display("Corriendo prueba de un varios Llenado fifos");
+        instrucciones_agente = varios_dispositivos_envio_recibido;
+        test_agente_mbx.put(instrucciones_agente);
 
-        instrucciones_agente = llenado_fifos;
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+        #10;
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+        $display("Corriendo prueba de un varios Reset inicio");
+        instrucciones_agente = varios_dispositivos_envio_recibido;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+        #10;
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+        $display("Corriendo prueba de Reset en medio");
+        instrucciones_agente = varios_dispositivos_envio_recibido;
+        test_agente_mbx.put(instrucciones_agente);
+
+        repeat (10000) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+
+        my_ambiente.test_sb_mailbox2 = test_sb_mailbox2;
+        instr_al_sb = reporte;
+        test_sb_mailbox2.put(instr_al_sb);
+
+        disable fork;
+        #10;
+
+        fork
+            
+            my_ambiente.run();
+
+        join_none
+
+        repeat (10) begin
+        
+            @(posedge _if.clk_i);
+        
+        end
+        $display("Corriendo prueba de Reset final");
+        instrucciones_agente = varios_dispositivos_envio_recibido;
         test_agente_mbx.put(instrucciones_agente);
 
         repeat (10000) begin
