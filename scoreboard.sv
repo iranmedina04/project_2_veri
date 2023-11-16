@@ -76,13 +76,13 @@ class score_board #(    parameter ROWS = 4,
 
         while (test_sb_mailbox.num() > 0) begin
             
-            $display("Se recibio una transaccion de reporte desde el test");
+            //$display("Se recibio una transaccion de reporte desde el test");
 
             test_sb_mailbox.get(transaccion_test);
 
             if (transaccion_test == reporte) begin
                 
-                $display("Se imprimirá el reporte");
+                //$display("Se imprimirá el reporte");
                 tiempo = 0;
                 linea = "";
                 linea_agregar = "";
@@ -160,7 +160,7 @@ class score_board #(    parameter ROWS = 4,
             paquetes_encontrados = 0;
             dato_monitor = new();
             chkr_sb_solicitud.get(dato_monitor);
-            $display("Mae si me estan llegando transacciones del checker solicitadas, terminal recibido: %h", dato_monitor.terminal_recibido);
+            //$display("Mae si me estan llegando transacciones del checker solicitadas, terminal recibido: %h", dato_monitor.terminal_recibido);
                                             
             for (int i=0; i < enviado_agente.size(); ++i) begin
                         
@@ -170,7 +170,7 @@ class score_board #(    parameter ROWS = 4,
                                     
                         dato_viejo = new();
                         dato_viejo = enviado_agente[i];
-                        $display("Se encontró una concidencia");
+                        //$display("Se encontró una concidencia");
                         sc_ckr_encontrado.put(dato_viejo);
                     
                         this.paquetes_encontrados = this.paquetes_encontrados + 1;
@@ -192,7 +192,7 @@ class score_board #(    parameter ROWS = 4,
 
         while (chkr_sb_solicitud_interna.num() > 0) begin
 
-            $display("Mae si me estan llegando transacciones del checker solicitades 2");
+            //$display("Mae si me estan llegando transacciones del checker solicitades 2");
             this.paquetes_encontrados2 = 0;
             dato_monitor2 = new();
             chkr_sb_solicitud_interna.get(dato_monitor2);
@@ -219,9 +219,9 @@ class score_board #(    parameter ROWS = 4,
                     
             if (paquetes_encontrados2 == 0) begin
                         
-                $display("Error: No se encontró ninguna transaccion anterior con ese valor\n");
-                dato_monitor2.print();
-                $display("Transacciones enviadas por el agente\n");
+                //$display("Error: No se encontró ninguna transaccion anterior con ese valor\n");
+                //dato_monitor2.print();
+                //$display("Transacciones enviadas por el agente\n");
 
                 for (int i=0; i < enviado_agente.size(); ++i) begin
 
@@ -236,7 +236,7 @@ class score_board #(    parameter ROWS = 4,
 
         while (chkr_sb_verificado.num() > 0) begin
 
-            $display("Se recibio transaccion verificada");
+            //$display("Se recibio transaccion verificada");
             dato_verificado = new();
             chkr_sb_verificado.get(dato_verificado);
             verificadas.push_back(dato_verificado);

@@ -114,14 +114,14 @@ class chcker #(
 
             while (mon_chckr_mbx.num() > 0) begin
 
-                $display("Mae si recibe una transacción del monitor");
+                //$display("Mae si recibe una transacción del monitor");
                 match = 0;
                 transaccion_mon_chckr_final = new();
                 mon_chckr_mbx.get(transaccion_mon_chckr_final);
                 mon_sb_slocitud_final_mbx.put(transaccion_mon_chckr_final);
 
                 while(mon_sb_slocitud_final_respuesta_final_mbx.num() > 0); begin
-                    $display("Espera la respuest del scoreboard");
+                    //$display("Espera la respuest del scoreboard");
                     transaccion_mon_sb_slocitud_final_respuesta_final = new();
                     mon_sb_slocitud_final_respuesta_final_mbx.get(transaccion_mon_sb_slocitud_final_respuesta_final);
                     transaccion_mon_sb_slocitud_final_respuesta_final.print();
