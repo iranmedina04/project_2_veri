@@ -122,6 +122,9 @@ module testbench();
         test_sb_mailbox2.put(instr_al_sb);
 
         disable fork;
+        #10;
+
+        $finish;
 
 
     end
