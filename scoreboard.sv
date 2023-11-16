@@ -223,11 +223,11 @@ class score_board #(    parameter ROWS = 4,
                 //dato_monitor2.print();
                 //$display("Transacciones enviadas por el agente\n");
 
-                for (int i=0; i < enviado_agente.size(); ++i) begin
+                //for (int i=0; i < enviado_agente.size(); ++i) begin
 
-                    enviado_agente[i].print();
+                   // enviado_agente[i].print();
 
-                end
+                //end
                 $finish;
 
             end
